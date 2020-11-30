@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 // an event indicating a user input
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 
 public abstract class Actor extends ImageView{
@@ -27,12 +29,10 @@ public abstract class Actor extends ImageView{
     }
 
     public <A extends Actor> List<A> getIntersectingObjects(Class<A> cls){
-        ArrayList<A> someArray = new ArrayList<A>();
-        for (A actor: getWorld().getObjects(cls)) {
-            if (actor != this && actor.intersects(this.getBoundsInLocal())) {
-                someArray.add(actor);
-            }
-        }
+        var objects = getWorld().getObjects(cls);
+        var filtered = objects.stream().filter(actor -> actor != this && actor.intersects(this.getBoundsInLocal()));
+        ArrayList<A> someArray = filtered.collect(Collectors
+                .toCollection(ArrayList::new));
         return someArray;
     }
 
