@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 // resize displayed image
 // an event indicating a user input
 import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class Actor extends ImageView{
@@ -25,7 +26,7 @@ public abstract class Actor extends ImageView{
         return this.getBoundsInLocal().getHeight();
     }
 
-    public <A extends Actor> java.util.List<A> getIntersectingObjects(Class<A> cls){
+    public <A extends Actor> List<A> getIntersectingObjects(Class<A> cls){
         ArrayList<A> someArray = new ArrayList<A>();
         for (A actor: getWorld().getObjects(cls)) {
             if (actor != this && actor.intersects(this.getBoundsInLocal())) {
