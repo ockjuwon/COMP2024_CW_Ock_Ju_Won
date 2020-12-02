@@ -12,9 +12,12 @@ public class Level1 extends World {
 
     public void act(long now) { }
 
-    AnimationTimer timer;
-    Animal animal;
+    private AnimationTimer timer;
+    private Animal animal;
 
+    public AnimationTimer getTimer() {
+        return timer;
+    }
 //    MyStage backgroundround;
 
     public Level1() {
