@@ -141,6 +141,8 @@ public class Animal extends Actor {
 			setX(300);
 			setY(679.8 + movementY);
 		} else if(getIntersectingObjects(FinishLine.class).size() >= 1) {
+			setX(300);
+			setY(679.8+movementY);
 			SceneController.getInstance().goNextLevel();
 		} else if (getY() < 413) {
 			waterDeath = true;

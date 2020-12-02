@@ -34,17 +34,24 @@ public class Level10 extends World {
 
         scoreBoard = new ScoreBoard(getChildren());
 
-        add(new Log("file:src/main/resources/log3.png", 150, 0, 166, -2));
-        add(new Log("file:src/main/resources/log3.png", 150, 220, 166, -2));
-        add(new Log("file:src/main/resources/log3.png", 150, 440, 166, -2));
+        add(new Log("file:src/main/resources/log3.png", 150, 0, 166, -1));
+        add(new Log("file:src/main/resources/log3.png", 150, 220, 166, -1));
+        add(new Log("file:src/main/resources/log3.png", 150, 440, 166, -1));
         //background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
-        add(new Log("file:src/main/resources/logs.png", 300, 0, 276, -2));
-        add(new Log("file:src/main/resources/logs.png", 300, 300, 276, -2));
+        add(new Log("file:src/main/resources/logs.png", 300, 0, 276, -1));
+        add(new Log("file:src/main/resources/logs.png", 300, 300, 276, -1));
 //        add(new Log("file:src/main/resources/logs.png", 300, 400, 276, -2));
         //background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 800, 276, -2));
-        add(new Log("file:src/main/resources/log3.png", 150, 50, 329, 2));
-        add(new Log("file:src/main/resources/log3.png", 150, 270, 329, 2));
-        add(new Log("file:src/main/resources/log3.png", 150, 490, 329, 2));
+        add(new Log("file:src/main/resources/log3.png", 150, 50, 229, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 270, 229, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 490, 229, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 50, 329, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 270, 329, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 490, 329, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 0, 389, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 220, 389, 1));
+        add(new Log("file:src/main/resources/log3.png", 150, 440, 389, 1));
+        add(new FinishLine("file:src/main/resources/logs.png", 0, 100, 300, 30));
         //background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 570, 329, 0.75));
 
         add(new Turtle(500, 376, -1, 130, 130));

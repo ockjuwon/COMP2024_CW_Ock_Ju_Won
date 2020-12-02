@@ -30,12 +30,13 @@ public class SceneController extends World {
     }
 
     public void start() {
-        changeScene("start");
+        changeScene("level10");
     }
 
     private void addScreen() {
         sceneHashMap.put("start", new Start());
         sceneHashMap.put("info", new Info());
+        sceneHashMap.put("win", new Win());
         sceneHashMap.put("level1", new Level1());
         sceneHashMap.put("level2", new Level2());
         sceneHashMap.put("level3", new Level3());
@@ -54,7 +55,8 @@ public class SceneController extends World {
             return;
         }
         int idx = Integer.parseInt(String.valueOf(sceneName.charAt(sceneName.length()-1)));
-        if(idx == 0) {
+        if(sceneName.equals("level10")) {
+            changeScene("win");
             return;
         }
         idx++;
