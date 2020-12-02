@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 
 public class SceneController extends World {
-
+    private static SceneController instance;
     private HashMap<String, Pane> sceneHashMap;
     private Pane currentPane = null;
     private Stage primaryStage;
@@ -20,6 +20,11 @@ public class SceneController extends World {
     static final int WORLD_HEIGHT = 800;
 
     public SceneController(Stage primaryStage) {
+        if(instance == null) {
+            instance = this;
+        } else {
+            throw new ExceptionInInitializerError("Multiple construction of singleton class");
+        }
         this.primaryStage = primaryStage;
         sceneHashMap = new HashMap<>();
         addScreen();
@@ -55,5 +60,9 @@ public class SceneController extends World {
     @Override
     public void act(long now) {
 
+    }
+
+    public static SceneController getInstance() {
+        return instance;
     }
 }
