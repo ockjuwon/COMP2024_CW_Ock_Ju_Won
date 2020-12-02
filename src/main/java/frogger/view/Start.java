@@ -1,5 +1,6 @@
 package frogger.view;
 
+import frogger.controller.SceneController;
 import frogger.model.StartButton;
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;
@@ -16,11 +17,13 @@ public class Start extends Pane {
     private static final int MENU_BUTTONS_START_Y = 150;
     private static final int HEIGHT = 800;
     private static final int WIDTH  = 600;
+    private SceneController sceneController;
 
     // define list to store these buttons
     List<StartButton> menuButtons;
 
     public Start() {
+        sceneController = SceneController.getInstance();
 
         menuButtons = new ArrayList<>();
         mainPane = new Pane();
@@ -43,7 +46,7 @@ public class Start extends Pane {
         StartButton startButton = new StartButton("PLAY");
         addMenuButton(startButton);
         startButton.setOnAction((event) -> {
-            getScene().setRoot(new Level1());
+            sceneController.changeScene("level1");
         });
     }
 
@@ -51,7 +54,7 @@ public class Start extends Pane {
         StartButton infoButton = new StartButton("INFO");
         addMenuButton(infoButton);
         infoButton.setOnAction((event) -> {
-           getScene().setRoot(new Info());
+            sceneController.changeScene("info");
         });
     }
 

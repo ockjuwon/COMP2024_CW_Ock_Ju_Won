@@ -37,7 +37,7 @@ public class SceneController extends World {
     private void addScreen() {
         sceneHashMap.put("start", new Start());
         sceneHashMap.put("info", new Info());
-        sceneHashMap.put("Level1", new Level1());
+        sceneHashMap.put("level1", new Level1());
     }
 
     public void changeScene(String sceneName) {
