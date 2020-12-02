@@ -107,7 +107,7 @@ public class SceneController extends World {
         musicPlayer.stopMusic();
         if(sceneName.startsWith("level")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("You Have Won The Stage!");
+            alert.setTitle("You Have Won The Stage " + idx + "!");
             alert.setHeaderText("Your Current Score: "+animal.getPoint()+"!");
             alert.setContentText("Highest Possible Score: " + idx * 100);
             alert.show();
