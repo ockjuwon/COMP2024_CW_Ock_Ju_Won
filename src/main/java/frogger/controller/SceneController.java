@@ -13,9 +13,9 @@ import java.util.HashMap;
 
 public class SceneController extends World {
     private static SceneController instance;
-    private HashMap<String, Pane> sceneHashMap;
+    private final HashMap<String, Pane> sceneHashMap;
     private Pane currentPane = null;
-    private Stage primaryStage;
+    private final Stage primaryStage;
     static final int WORLD_WIDTH = 600;
     static final int WORLD_HEIGHT = 800;
 
