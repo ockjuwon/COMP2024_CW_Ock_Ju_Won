@@ -19,46 +19,14 @@ public abstract class World extends Pane {
     public World() {
     	
     	sceneProperty().addListener(new ChangeListener<Scene>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
-				if (newValue != null) {
-					newValue.setOnKeyReleased(new EventHandler<KeyEvent>() {
-
-						@Override
-						public void handle(KeyEvent event) {
-							if(getOnKeyReleased() != null) 
-								getOnKeyReleased().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
-								if (anActor.getOnKeyReleased() != null) {
-									anActor.getOnKeyReleased().handle(event);
-								}
-							}
-						}
-						
-					});
-					
-					newValue.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-						@Override
-						public void handle(KeyEvent event) {
-							if(getOnKeyPressed() != null) 
-								getOnKeyPressed().handle(event);
-							List<Actor> myActors = getObjects(Actor.class);
-							for (Actor anActor: myActors) {
-								if (anActor.getOnKeyPressed() != null) {
-									anActor.getOnKeyPressed().handle(event);
-								}
-							}
-						}
-						
-					});
-				}
-				
-			}
-    		
-		});
+            @Override
+            public void changed(ObservableValue<? extends Scene> observable, Scene oldValue, Scene newValue) {
+                if (newValue != null) {
+                    newValue.setOnKeyReleased(new KeyReleasedListener());
+                    newValue.setOnKeyPressed(new KeyPressedListener());
+                }
+            }
+        });
     }
 
     public void createTimer() {
@@ -104,4 +72,33 @@ public abstract class World extends Pane {
     }
 
     public abstract void act(long now);
+
+    private class KeyReleasedListener implements EventHandler<KeyEvent> {
+        @Override
+        public void handle(KeyEvent event) {
+            if(getOnKeyReleased() != null)
+                getOnKeyReleased().handle(event);
+            List<Actor> myActors = getObjects(Actor.class);
+            for (Actor anActor: myActors) {
+                if (anActor.getOnKeyReleased() != null) {
+                    anActor.getOnKeyReleased().handle(event);
+                }
+            }
+        }
+    }
+
+    private class KeyPressedListener implements EventHandler<KeyEvent> {
+        @Override
+        public void handle(KeyEvent event) {
+            if(getOnKeyPressed() != null)
+                getOnKeyPressed().handle(event);
+            List<Actor> myActors = getObjects(Actor.class);
+            for (Actor anActor: myActors) {
+                if (anActor.getOnKeyPressed() != null) {
+                    anActor.getOnKeyPressed().handle(event);
+                }
+            }
+        }
+    }
+
 }
