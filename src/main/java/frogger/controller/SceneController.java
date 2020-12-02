@@ -63,6 +63,9 @@ public class SceneController extends World {
     }
 
     public static SceneController getInstance() {
+        if(instance == null) {
+            throw new NullPointerException("Instance is not initialized");
+        }
         return instance;
     }
 }
