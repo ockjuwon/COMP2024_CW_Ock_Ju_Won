@@ -1,9 +1,12 @@
 package frogger.controller;
 
+import frogger.model.Animal;
 import frogger.model.MusicPlayer;
+import frogger.model.ScoreBoard;
 import frogger.model.World;
 import frogger.view.*;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -57,19 +60,28 @@ public class SceneController extends World {
         sceneHashMap.put("level10", new Level10());
     }
 
-    public void goNextLevel() {
+    public void goNextLevel(Animal animal) {
         if(!sceneName.startsWith("level")) {
             changeScene("level1");
             return;
         }
         int idx = Integer.parseInt(String.valueOf(sceneName.charAt(sceneName.length()-1)));
         if(sceneName.equals("level10")) {
-            changeScene("win");
+            win(animal);
             return;
         }
         idx++;
         String nextScene = String.format("level%d", idx);
         changeScene(nextScene);
+    }
+
+    public void win(Animal animal) {
+        changeScene("win");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("You Have Won The Game!");
+        alert.setHeaderText("Your High Score: "+animal.getPoint()+"!");
+        alert.setContentText("Highest Possible Score: 800");
+        alert.show();
     }
 
     public void changeScene(String sceneName) {
@@ -86,6 +98,7 @@ public class SceneController extends World {
             musicPlayer.playMusic();
         }
         if(currentPane != null && currentPane instanceof World) {
+            ((World) currentPane).getObjects(ScoreBoard.class).get(0).focus();
             ((World) currentPane).start();
         }
     }
