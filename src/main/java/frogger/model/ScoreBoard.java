@@ -28,8 +28,8 @@ public class ScoreBoard {
         scoreText = new TextField();
         update(maxScore);
         scoreText.setStyle("-fx-font: 40 arial; -fx-text-inner-color: white;");
-        scoreText.setLayoutX(360);
-        scoreText.setLayoutY(25);
+        scoreText.setLayoutX(500);
+        scoreText.setLayoutY(20);
         scoreText.setBackground(Background.EMPTY);
         scoreText.setDisable(true);
     }
