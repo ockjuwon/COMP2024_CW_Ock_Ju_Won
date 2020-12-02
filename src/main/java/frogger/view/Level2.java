@@ -6,24 +6,10 @@ import javafx.scene.control.Alert;
 
 import java.util.List;
 
-public class Level2 extends World {
+public class Level2 extends Level {
 
-    public void act(long now) { }
-
-    private AnimationTimer timer;
-    private Animal animal;
-    private ScoreBoard scoreBoard;
-
-    public AnimationTimer getTimer() {
-        return timer;
-    }
-//    MyStage backgroundround;
-
-    public Level2() {
-        startLevel1();
-    }
-
-    private void startLevel1() {
+    @Override
+    protected void startLevel() {
 
 
         BackgroundImage froggerBack = new BackgroundImage("file:src/main/resources/iKogsKW.png");
@@ -73,52 +59,4 @@ public class Level2 extends World {
 
         start();
     }
-    public void createTimer() {
-        timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                act(now);
-                List<Actor> actors = getObjects(Actor.class);
-
-                for (Actor anActor: actors) {
-                    anActor.act(now);
-                }
-
-                if (animal.changeScore()) {
-                    setNumber(animal.getPoint());
-                }
-                if (animal.getStop()) {
-                    System.out.print("STOPP:");
-                    stop();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("You Have Won The Game!");
-                    alert.setHeaderText("Your High Score: "+animal.getPoint()+"!");
-                    alert.setContentText("Highest Possible Score: 800");
-                    alert.show();
-                }
-            }
-        };
-    }
-
-    public void start() {
-//        background.playMusic();
-        createTimer();
-        timer.start();
-    }
-
-    public void stop() {
-        timer.stop();
-    }
-
-    public void setNumber(int n) {
-        int shift = 0;
-        while (n > 0) {
-            int d = n / 10;
-            int k = n - d * 10;
-            n = d;
-//            background.add(new Digit(k, 30, 360 - shift, 25));
-            shift+=30;
-        }
-    }
-
 }
