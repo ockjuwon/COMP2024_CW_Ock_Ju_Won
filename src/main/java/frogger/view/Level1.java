@@ -6,11 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import java.util.List;
+
 public class Level1 extends World {
 
-    public void act(long now) {
-
-    }
+    public void act(long now) { }
 
     AnimationTimer timer;
     Animal animal;
@@ -63,10 +63,10 @@ public class Level1 extends World {
         //background.add(new Log("file:src/p4_group_8_repo/log2.png", 100, 220, 1));
         //background.add(new Log("file:src/p4_group_8_repo/log2.png", 200, 220, 1));
         //background.add(new Log("file:src/p4_group_8_repo/log2.png", 400, 220, 1));
-        //End end2 = new End();
-        //End end3 = new End();
-        //End end4 = new End();
-        //End end5 = new End();
+//        End end2 = new End();
+//        End end3 = new End();
+//        End end4 = new End();
+//        End end5 = new End();
         add(new End(13, 96));
         add(new End(141, 96));
         add(new End(141 + 141 - 13, 96));
@@ -95,6 +95,13 @@ public class Level1 extends World {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                act(now);
+                List<Actor> actors = getObjects(Actor.class);
+
+                for (Actor anActor: actors) {
+                    anActor.act(now);
+                }
+
                 if (animal.changeScore()) {
                     setNumber(animal.getPoints());
                 }
