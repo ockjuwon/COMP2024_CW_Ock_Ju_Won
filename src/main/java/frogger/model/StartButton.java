@@ -28,31 +28,34 @@ public class StartButton extends Button{
     }
 
     private void initializeButtonListeners() {
+        setOnMousePressed(new MousePressedHandler());
+        setOnMouseReleased(new MouseReleasedHandler());
+        setOnMouseExited(new MouseExitedHandler());
+    }
 
-        setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getButton().equals(MouseButton.PRIMARY)) {
-                    setButtonPressedStyle();
-                }
+    private class MousePressedHandler implements EventHandler<MouseEvent> {
+        @Override
+        public void handle(MouseEvent event) {
+            if(event.getButton().equals(MouseButton.PRIMARY)) {
+                setButtonPressedStyle();
             }
-        });
+        }
+    }
 
-        setOnMouseReleased(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if(event.getButton().equals(MouseButton.PRIMARY)) {
-                    setButtonReleasedStyle();
-                }
+    private class MouseReleasedHandler implements EventHandler<MouseEvent> {
+        @Override
+        public void handle(MouseEvent event) {
+            if(event.getButton().equals(MouseButton.PRIMARY)) {
+                setButtonReleasedStyle();
             }
-        });
+        }
+    }
 
-        setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                setEffect(null);
-            }
-        });
+    private class MouseExitedHandler implements EventHandler<MouseEvent> {
+        @Override
+        public void handle(MouseEvent event) {
+            setEffect(null);
+        }
     }
 }
 
