@@ -10,19 +10,20 @@ import javafx.scene.layout.Background;
 public class ScoreBoard {
     private static ScoreBoard instance;
     private TextField scoreText;
-    private int maxScore;
+    private static int maxScore = 0;
     public ScoreBoard(ObservableList<Node> children) {
-        if(instance == null) {
-            instance = this;
-        }
         initializeScoreText();
         children.add(scoreText);
     }
 
+    public void focus() {
+        instance = this;
+        update(maxScore);
+    }
+
     private void initializeScoreText() {
         scoreText = new TextField();
-        maxScore = 0;
-        update(0);
+        update(maxScore);
         scoreText.setStyle("-fx-font: 40 arial; -fx-text-inner-color: white;");
         scoreText.setLayoutX(500);
         scoreText.setLayoutY(20);
@@ -44,5 +45,13 @@ public class ScoreBoard {
             throw new NullPointerException("Instance is not initialized");
         }
         return instance;
+    }
+
+    public static int getMaxScore() {
+        return maxScore;
+    }
+
+    public static void getMaxScore(int maxScore) {
+        ScoreBoard.maxScore = maxScore;
     }
 }
