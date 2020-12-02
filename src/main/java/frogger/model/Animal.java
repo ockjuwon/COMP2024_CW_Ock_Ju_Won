@@ -43,7 +43,7 @@ public class Animal extends Actor {
 
 	public Animal(String imageLink) {
 
-		setImage(new Image(imageLink, imgSize, imgSize, true, true));
+		setImage(ImageProvider.get(imageLink, imgSize));
 		setX(300);
 		setY(679.8 + movementY);
 		initializeKeyMap();
@@ -81,8 +81,8 @@ public class Animal extends Actor {
 			if (waterDeath) {
 				endDeathCnt++;
 			}
-			if (startDeathCnt <= carD && carD < endDeathCnt) {
-				String formattedUrl = String.format("file:src/resources/%s%d.png", deathCase, carD);
+			if (startDeathCnt <= carD && carD <= endDeathCnt) {
+				String formattedUrl = String.format("file:src/main/resources/%s%d.png", deathCase, carD);
 				setImage(ImageProvider.get(formattedUrl, imgSize));
 			}
 			if (carD == endDeathCnt + 1) {
@@ -95,7 +95,7 @@ public class Animal extends Actor {
 				carD = 0;
 				setX(300);
 				setY(679.8 + movementY);
-				String url = "file:src/resources/froggerUp.png";
+				String url = "file:src/main/resources/froggerUp.png";
 				setImage(ImageProvider.get(url, imgSize));
 				if (points > 50) {
 					points -= 50;
@@ -217,7 +217,7 @@ public class Animal extends Actor {
 	private Image getMoveImage(Key key, boolean isJumping) {
 		String move = keyArray[key.ordinal()];
 		String jump = isJumping ? "Jump" : "";
-		String format = "file:src/resources/frogger%s%s.png";
+		String format = "file:src/main/resources/frogger%s%s.png";
 		String formattedUrl = String.format(format, move, jump);
 		return ImageProvider.get(formattedUrl, imgSize);
 	}
