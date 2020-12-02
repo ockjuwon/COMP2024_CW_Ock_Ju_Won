@@ -15,18 +15,10 @@ public class WetTurtle extends Actor{
 	public void act(long now) {
 
 		switch (calculateType(now)) {
-			case 0:
-				setImage(turtle2);
-				break;
-			case 1:
-				setImage(turtle1);
-				break;
-			case 2:
-				setImage(turtle3);
-				break;
-			case 3:
-				setImage(turtle4);
-				break;
+			case 0 -> setImage(turtle2);
+			case 1 -> setImage(turtle1);
+			case 2 -> setImage(turtle3);
+			case 3 -> setImage(turtle4);
 		}
 		sunk = true;
 		move(speed , 0);
