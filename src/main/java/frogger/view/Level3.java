@@ -34,9 +34,9 @@ public class Level3 extends World {
 
         scoreBoard = new ScoreBoard(getChildren());
 
-        add(new Log("file:src/main/resources/log3.png", 150, 0, 166, 0.75));
-        add(new Log("file:src/main/resources/log3.png", 150, 220, 166, 0.75));
-        add(new Log("file:src/main/resources/log3.png", 150, 440, 166, 0.75));
+        add(new Log("file:src/main/resources/log3.png", 150, 0, 126, 0.1));
+        add(new Log("file:src/main/resources/log3.png", 150, 220, 126, 0.1));
+        add(new Log("file:src/main/resources/log3.png", 150, 440, 126, 0.1));
         //background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
         add(new Log("file:src/main/resources/logs.png", 300, 0, 276, -2));
 //        add(new Log("file:src/main/resources/logs.png", 300, 400, 276, -2));

@@ -82,10 +82,8 @@ public class Level5 extends World {
         add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 300, 649, 1, 120, 120));
         add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 600, 649, 1, 120, 120));
         //background.add(new Obstacle("file:src/p4_group_8_repo/truck1"+"Right.png", 720, 649, 1, 120, 120));
-        add(new Obstacle("file:src/main/resources/car1Left.png", 100, 597, -1, 50, 50));
-        add(new Obstacle("file:src/main/resources/car1Left.png", 250, 597, -1, 50, 50));
-        add(new Obstacle("file:src/main/resources/car1Left.png", 400, 597, -1, 50, 50));
-        add(new Obstacle("file:src/main/resources/car1Left.png", 550, 597, -1, 50, 50));
+        add(new Obstacle("file:src/main/resources/car1Left.png", 100, 597, 1, 50, 50));
+        add(new Obstacle("file:src/main/resources/car1Left.png", 400, 597, -11, 50, 50));
         add(new Obstacle("file:src/main/resources/truck2Right.png", 0, 540, 1, 200, 200));
         add(new Obstacle("file:src/main/resources/truck2Right.png", 500, 540, 1, 200, 200));
         add(new Obstacle("file:src/main/resources/car1Left.png", 500, 490, -5, 50, 50));

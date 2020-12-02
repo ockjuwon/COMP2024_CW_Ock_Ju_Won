@@ -25,9 +25,6 @@ public class Level2 extends World {
 
     private void startLevel1() {
 
-        //Obstacle obstacle = new Obstacle("file:src/p4_group_8_repo/truck1Right.png", 25, 25, 3);
-        //Obstacle obstacle1 = new Obstacle("file:src/p4_group_8_repo/truck2Right.png", 100, 100,2 );
-        //Obstacle obstacle2 = new Obstacle("file:src/p4_group_8_repo/truck1Right.png",0,  150, 1);
 
         BackgroundImage froggerBack = new BackgroundImage("file:src/main/resources/iKogsKW.png");
         add(froggerBack);
