@@ -52,7 +52,6 @@ public class Animal extends Actor {
 
 		setOnKeyPressed(new AnimalKeyPressedListener());
 		setOnKeyReleased(new AnimalKeyReleasedListener());
-
 	}
 
 	private void initializeKeyMap() {
@@ -131,9 +130,14 @@ public class Animal extends Actor {
 			}
 		}
 		if (getIntersectingObjects(End.class).size() >= 1) {
+			End end = getIntersectingObjects(End.class).get(0);
 			setX(300);
 			setY(679.8 + movementY);
-			SceneController.getInstance().goNextLevel(this);
+			if(end.isActivated()) {
+				return;
+			}
+			end.activate();
+			SceneController.getInstance().touchEnd(this);
 			return;
 		}
 		if(noMove) {
