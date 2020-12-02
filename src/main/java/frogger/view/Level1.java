@@ -2,13 +2,6 @@ package frogger.view;
 
 import frogger.model.*;
 import javafx.animation.AnimationTimer;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -123,18 +116,14 @@ public class Level1 extends World {
                 }
 
                 if (animal.changeScore()) {
-                    setNumber(animal.getPoints());
+                    setNumber(animal.getPoint());
                 }
                 if (animal.getStop()) {
                     System.out.print("STOPP:");
 //                    background.stopMusic();
                     stop();
 //                    background.stop();
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("You Have Won The Game!");
-                    alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
-                    alert.setContentText("Highest Possible Score: 800");
-                    alert.show();
+
                 }
             }
         };

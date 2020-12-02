@@ -114,7 +114,7 @@ public class Level9 extends World {
                 }
 
                 if (animal.changeScore()) {
-                    setNumber(animal.getPoints());
+                    setNumber(animal.getPoint());
                 }
                 if (animal.getStop()) {
                     System.out.print("STOPP:");
@@ -123,7 +123,7 @@ public class Level9 extends World {
 //                    background.stop();
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("You Have Won The Game!");
-                    alert.setHeaderText("Your High Score: "+animal.getPoints()+"!");
+                    alert.setHeaderText("Your High Score: "+animal.getPoint()+"!");
                     alert.setContentText("Highest Possible Score: 800");
                     alert.show();
                 }
