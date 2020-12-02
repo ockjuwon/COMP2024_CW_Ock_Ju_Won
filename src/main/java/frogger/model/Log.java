@@ -10,7 +10,7 @@ public class Log extends Actor {
 		move(speed , 0);
 		if (getX()>600 && speed>0)
 			setX(-180);
-		if (getX()<300 && speed<0)
+		if (getX()<-300 && speed<0)
 			setX(700);
 	}
 	

@@ -45,7 +45,7 @@ public class Level1 extends World {
         add(new Log("file:src/main/resources/log3.png", 150, 440, 166, 0.75));
         //background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
         add(new Log("file:src/main/resources/logs.png", 300, 0, 276, -2));
-        add(new Log("file:src/main/resources/logs.png", 300, 400, 276, -2));
+//        add(new Log("file:src/main/resources/logs.png", 300, 400, 276, -2));
         //background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 800, 276, -2));
         add(new Log("file:src/main/resources/log3.png", 150, 50, 329, 0.75));
         add(new Log("file:src/main/resources/log3.png", 150, 270, 329, 0.75));
