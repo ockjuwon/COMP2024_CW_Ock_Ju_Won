@@ -99,11 +99,8 @@ public class SceneController extends World {
         }
         if(currentPane != null && currentPane instanceof World) {
             var list = ((World) currentPane).getObjects(ScoreBoard.class);
-            ScoreBoard scoreBoard = null;
             if(list.size() >= 1) {
-                scoreBoard = list.get(0);
-            }
-            if(scoreBoard != null) {
+                ScoreBoard scoreBoard = list.get(0);
                 scoreBoard.focus();
             }
             ((World) currentPane).start();
