@@ -10,6 +10,7 @@ import javafx.scene.layout.Background;
 public class ScoreBoard {
     private static ScoreBoard instance;
     private TextField scoreText;
+    private int maxScore;
     public ScoreBoard(ObservableList<Node> children) {
         if(instance == null) {
             instance = this;
@@ -20,7 +21,8 @@ public class ScoreBoard {
 
     private void initializeScoreText() {
         scoreText = new TextField();
-        scoreText.setText("0");
+        maxScore = 0;
+        update(0);
         scoreText.setStyle("-fx-font: 40 arial; -fx-text-inner-color: white;");
         scoreText.setLayoutX(500);
         scoreText.setLayoutY(20);
@@ -28,8 +30,12 @@ public class ScoreBoard {
         scoreText.setDisable(true);
     }
 
-    public void update(Integer score) {
+    public boolean update(Integer score) {
+        if(score < maxScore) {
+            return false;
+        }
         scoreText.setText(score.toString());
+        return true;
     }
 
     public static ScoreBoard getInstance() {
