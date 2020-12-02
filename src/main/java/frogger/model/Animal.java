@@ -114,6 +114,7 @@ public class Animal extends Actor {
 		setImage(ImageProvider.get(url, imgSize));
 		point = firstPoint;
 		changeScore = true;
+		changeScore();
 	}
 
 	private void handleInsersectObjects() {
@@ -190,6 +191,7 @@ public class Animal extends Actor {
 			jumping = false;
 			if (mappedKey == Key.UP && getY() < w) {
 				changeScore = true;
+				changeScore();
 				w = getY();
 				point += 10;
 			}
