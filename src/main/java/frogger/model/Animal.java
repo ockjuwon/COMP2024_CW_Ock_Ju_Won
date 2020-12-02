@@ -116,10 +116,8 @@ public class Animal extends Actor {
 			stop = true;
 		}
 		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-			if (getIntersectingObjects(Log.class).get(0).getLeft())
-				move(-2, 0);
-			else
-				move(.75, 0);
+			Log log = getIntersectingObjects(Log.class).get(0);
+			move(log.getSpeed(), 0);
 		} else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
 			move(-1, 0);
 		} else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
