@@ -1,5 +1,6 @@
 package frogger.controller;
 
+import frogger.model.MusicPlayer;
 import frogger.model.World;
 import frogger.view.*;
 import javafx.scene.Scene;
@@ -11,12 +12,13 @@ import java.util.HashMap;
 
 public class SceneController extends World {
     private static SceneController instance;
-    private final HashMap<String, Pane> sceneHashMap;
+    private final HashMap<String, Pane> sceneHashMap = new HashMap<>();
     private String sceneName = null;
     private Pane currentPane = null;
     private final Stage primaryStage;
     static final int WORLD_WIDTH = 600;
     static final int WORLD_HEIGHT = 800;
+    private MusicPlayer musicPlayer = new MusicPlayer();
 
     public SceneController(Stage primaryStage) {
         if(instance == null) {
@@ -25,7 +27,6 @@ public class SceneController extends World {
             throw new ExceptionInInitializerError("Multiple construction of singleton class");
         }
         this.primaryStage = primaryStage;
-        sceneHashMap = new HashMap<>();
         addScreen();
     }
 
@@ -69,10 +70,14 @@ public class SceneController extends World {
         if(currentPane != null && currentPane instanceof World) {
             ((World) currentPane).stop();
         }
+        musicPlayer.stopMusic();
         currentPane = sceneHashMap.get(sceneName);
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(currentPane, WORLD_WIDTH, WORLD_HEIGHT));
         primaryStage.show();
+        if(sceneName.startsWith("level")) {
+            musicPlayer.playMusic();
+        }
         if(currentPane != null && currentPane instanceof World) {
             ((World) currentPane).start();
         }

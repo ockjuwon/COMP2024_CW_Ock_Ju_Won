@@ -1,5 +1,4 @@
 import frogger.controller.SceneController;
-import frogger.model.MyStage;
 import frogger.view.Start;
 import javafx.application.Application;
 import javafx.scene.Scene;
