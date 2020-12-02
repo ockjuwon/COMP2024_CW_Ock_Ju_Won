@@ -14,7 +14,8 @@ import javafx.scene.input.KeyEvent;
 
 public class Animal extends Actor {
 
-	private int points = 0;
+	private int firstPoint = ScoreBoard.getInstance().getMaxScore();
+	private int point = firstPoint;
 	private int end = 0;
 	private boolean jumping = false;
 	private boolean noMove = false;
@@ -99,8 +100,8 @@ public class Animal extends Actor {
 				setY(679.8 + movementY);
 				String url = "file:src/main/resources/froggerUp.png";
 				setImage(ImageProvider.get(url, imgSize));
-				if (points > 50) {
-					points -= 50;
+				if (point > 50) {
+					point -= 50;
 					changeScore = true;
 				}
 			}
@@ -131,9 +132,9 @@ public class Animal extends Actor {
 			inter = (ArrayList<End>) getIntersectingObjects(End.class);
 			if (getIntersectingObjects(End.class).get(0).isActivated()) {
 				end--;
-				points -= 50;
+				point -= 50;
 			}
-			points += 50;
+			point += 50;
 			changeScore = true;
 			w = 800;
 			getIntersectingObjects(End.class).get(0).setEnd();
@@ -143,7 +144,8 @@ public class Animal extends Actor {
 		} else if(getIntersectingObjects(FinishLine.class).size() >= 1) {
 			setX(300);
 			setY(679.8+movementY);
-			SceneController.getInstance().goNextLevel();
+			SceneController.getInstance().goNextLevel(this);
+
 		} else if (getY() < 413) {
 			waterDeath = true;
 			setX(300);
@@ -169,7 +171,7 @@ public class Animal extends Actor {
 			if (mappedKey == Key.UP && getY() < w) {
 				changeScore = true;
 				w = getY();
-				points += 10;
+				point += 10;
 			}
 		}
 	}
@@ -205,13 +207,13 @@ public class Animal extends Actor {
 		return end == 5;
 	}
 
-	public int getPoints() {
-		return points;
+	public int getPoint() {
+		return point;
 	}
 
 	public boolean changeScore() {
 		if (changeScore) {
-			scoreBoard.update(points);
+			scoreBoard.update(point);
 			changeScore = false;
 			return true;
 		}
