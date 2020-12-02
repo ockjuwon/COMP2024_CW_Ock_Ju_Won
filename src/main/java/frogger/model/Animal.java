@@ -26,7 +26,6 @@ public class Animal extends Actor {
 	private int imgSize = 40;
 	private boolean carDeath = false;
 	private boolean waterDeath = false;
-	private boolean stop = false;
 	private boolean changeScore = false;
 	private int carD = 0;
 	private double w = 800;
@@ -63,78 +62,107 @@ public class Animal extends Actor {
 		keyMap.put(KeyCode.D, Key.RIGHT);
 	}
 
-	@Override
-	public void act(long now) {
-		if (getY() < 0 || getY() > 734) {
-			setX(300);
-			setY(679.8 + movementY);
-		}
-		if (getX() < 0) {
-			move(movementY * 2, 0);
-		}
-		boolean death = carDeath || waterDeath;
-		if (death) {
-			String deathCase = carDeath ? "cardeath" : "waterdeath";
-			noMove = true;
-			if ((now) % 11 == 0) {
-				carD++;
-			}
-			int startDeathCnt = 1;
-			int endDeathCnt = 3;
-			if (waterDeath) {
-				endDeathCnt++;
-			}
-			if (startDeathCnt <= carD && carD <= endDeathCnt) {
-				String formattedUrl = String.format("file:src/main/resources/%s%d.png", deathCase, carD);
-				setImage(ImageProvider.get(formattedUrl, imgSize));
-			}
-			if (carD == endDeathCnt + 1) {
-				if (carDeath) {
-					carDeath = false;
-				} else if (waterDeath) {
-					waterDeath = false;
-				}
-				noMove = false;
-				carD = 0;
-				setX(300);
-				setY(679.8 + movementY);
-				String url = "file:src/main/resources/froggerUp.png";
-				setImage(ImageProvider.get(url, imgSize));
-				point = firstPoint;
-				changeScore = true;
-			}
+	private boolean OOB() {
+		return getY() < 0 || getY() > 734;
+	}
 
-		}
+	private void goDefaultPosition() {
+		setX(300);
+		setY(679.8 + movementY);
+	}
 
-		if (getX() > 600) {
-			move(-movementY * 2, 0);
+	private boolean intersectLeftBound() {
+		return getX() < 0;
+	}
+
+	private boolean intersectRightBound() {
+		return getX() > 600;
+	}
+
+	private void goRight() {
+		move(movementX * 2, 0);
+	}
+
+	private void goLeft() {
+		move(-movementX * 2, 0);
+	}
+
+	private void respawn(long now) {
+		String deathCase = carDeath ? "cardeath" : "waterdeath";
+		noMove = true;
+		if ((now) % 11 == 0) {
+			carD++;
 		}
+		int startDeathCnt = 1;
+		int endDeathCnt = 3;
+		if (waterDeath) {
+			endDeathCnt++;
+		}
+		if (startDeathCnt <= carD && carD <= endDeathCnt) {
+			String formattedUrl = String.format("file:src/main/resources/%s%d.png", deathCase, carD);
+			setImage(ImageProvider.get(formattedUrl, imgSize));
+		}
+		if (carD != endDeathCnt + 1) {
+			return;
+		}
+		carDeath = false;
+		waterDeath = false;
+		noMove = false;
+		carD = 0;
+		setX(300);
+		setY(679.8 + movementY);
+		String url = "file:src/main/resources/froggerUp.png";
+		setImage(ImageProvider.get(url, imgSize));
+		point = firstPoint;
+		changeScore = true;
+	}
+
+	private void handleInsersectObjects() {
 		if (getIntersectingObjects(Obstacle.class).size() >= 1) {
 			carDeath = true;
+			return;
 		}
-		if (getX() == 240 && getY() == 82) {
-			stop = true;
-		}
-		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) {
-			Log log = getIntersectingObjects(Log.class).get(0);
-			move(log.getSpeed(), 0);
-		} else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) {
-			move(-1, 0);
-		} else if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
-			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+		if (getIntersectingObjects(WetTurtle.class).size() >= 1 || getY() < 413) {
+			if (getY() < 413 || getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
 				waterDeath = true;
+				return;
 			} else {
 				move(-1, 0);
 			}
-		} else if (getIntersectingObjects(End.class).size() >= 1) {
-			setX(300);
-			setY(679.8+movementY);
-			SceneController.getInstance().goNextLevel(this);
-		} else if (getY() < 413) {
-			waterDeath = true;
-			setX(300);
-			setY(679.8+movementY);
 		}
+		if (getIntersectingObjects(End.class).size() >= 1) {
+			setX(300);
+			setY(679.8 + movementY);
+			SceneController.getInstance().goNextLevel(this);
+			return;
+		}
+		if(noMove) {
+			return;
+		}
+		if (getIntersectingObjects(Log.class).size() >= 1) {
+			Log log = getIntersectingObjects(Log.class).get(0);
+			move(log.getSpeed(), 0);
+		} else if (getIntersectingObjects(Turtle.class).size() >= 1) {
+			move(-1, 0);
+		}
+	}
+
+	@Override
+	public void act(long now) {
+		if (OOB()) {
+			goDefaultPosition();
+		}
+		if (intersectLeftBound()) {
+			goRight();
+		}
+		if (intersectRightBound()) {
+			goLeft();
+		}
+		boolean death = carDeath || waterDeath;
+		if (death) {
+			respawn(now);
+		}
+		handleInsersectObjects();
 	}
 
 	private class AnimalKeyReleasedListener implements EventHandler<KeyEvent> {
