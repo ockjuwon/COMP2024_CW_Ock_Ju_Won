@@ -93,7 +93,7 @@ public abstract class World extends Pane {
         getChildren().remove(actor);
     }
 
-    public <A extends Actor> List<A> getObjects(Class<A> cls) {
+    public <A> List<A> getObjects(Class<A> cls) {
         ArrayList<A> someArray = new ArrayList<A>();
         for (Node n: getChildren()) {
             if (cls.isInstance(n)) {
