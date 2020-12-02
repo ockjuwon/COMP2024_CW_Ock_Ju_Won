@@ -3,6 +3,7 @@ package frogger.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import frogger.controller.SceneController;
 import frogger.data.ImageProvider;
 import javafx.event.EventHandler;
 
@@ -139,6 +140,8 @@ public class Animal extends Actor {
 			end++;
 			setX(300);
 			setY(679.8 + movementY);
+		} else if(getIntersectingObjects(FinishLine.class).size() >= 1) {
+			SceneController.getInstance().goNextLevel();
 		} else if (getY() < 413) {
 			waterDeath = true;
 			setX(300);

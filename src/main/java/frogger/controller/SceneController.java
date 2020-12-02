@@ -48,7 +48,7 @@ public class SceneController extends World {
         sceneHashMap.put("level10", new Level10());
     }
 
-    public void nextLevel() {
+    public void goNextLevel() {
         if(!sceneName.startsWith("level")) {
             changeScene("level1");
             return;
