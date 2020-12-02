@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.net.MalformedURLException;
 import java.util.HashMap;
 
 
@@ -18,9 +19,15 @@ public class SceneController extends World {
     private final Stage primaryStage;
     static final int WORLD_WIDTH = 600;
     static final int WORLD_HEIGHT = 800;
-    private MusicPlayer musicPlayer = new MusicPlayer();
+    private MusicPlayer musicPlayer;
+
 
     public SceneController(Stage primaryStage) {
+        try {
+            musicPlayer = new MusicPlayer();
+        } catch (MalformedURLException err) {
+            err.printStackTrace();
+        }
         if(instance == null) {
             instance = this;
         } else {
