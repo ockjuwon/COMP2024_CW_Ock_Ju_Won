@@ -158,4 +158,8 @@ public class Level extends World {
         }
     }
 
+    public ScoreBoard getScoreBoard() {
+        return scoreBoard;
+    }
+
 }

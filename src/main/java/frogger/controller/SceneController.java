@@ -20,7 +20,6 @@ import java.util.HashMap;
 public class SceneController extends World {
     private static SceneController instance;
     private final HashMap<String, Pane> paneHashMap = new HashMap<>();
-    private final HashMap<String, Scene> sceneHashMap = new HashMap<>();
     private String sceneName = null;
     private Pane currentPane = null;
     private final Stage primaryStage;
@@ -66,20 +65,20 @@ public class SceneController extends World {
 
         for(String key : paneHashMap.keySet()) {
             Pane pane = paneHashMap.get(key);
-            Scene scene = new Scene(pane, WORLD_WIDTH, WORLD_HEIGHT);
-            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-                final String storedKey = key;
-                @Override
-                public void handle(KeyEvent event) {
-                    if(event.getCode() == KeyCode.ESCAPE) {
-                        if(storedKey.equals("start")) {
-                            return;
-                        }
-                        changeScene("start");
-                    }
-                }
-            });
-            sceneHashMap.put(key, scene);
+//            Scene scene = new Scene(pane, WORLD_WIDTH, WORLD_HEIGHT);
+//            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+//                final String storedKey = key;
+//                @Override
+//                public void handle(KeyEvent event) {
+//                    if(event.getCode() == KeyCode.ESCAPE) {
+//                        if(storedKey.equals("start")) {
+//                            return;
+//                        }
+//                        changeScene("start");
+//                    }
+//                }
+//            });
+//            sceneHashMap.put(key, scene);
         }
     }
 
@@ -132,19 +131,30 @@ public class SceneController extends World {
         musicPlayer.stopMusic();
         currentPane = paneHashMap.get(sceneName);
         primaryStage.setResizable(false);
-        Scene scene = sceneHashMap.get(sceneName);
+        if(currentPane != null && currentPane instanceof World) {
+            ScoreBoard scoreBoard = ((Level) currentPane).getScoreBoard();
+            scoreBoard.focus();
+            ((World) currentPane).start();
+        }
+        Scene scene = new Scene(currentPane, WORLD_WIDTH, WORLD_HEIGHT);
+        if(sceneName.startsWith("info")) {
+//            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+//                final String storedKey = sceneName;
+//                @Override
+//                public void handle(KeyEvent event) {
+//                    if(event.getCode() == KeyCode.ESCAPE) {
+//                        if(storedKey.equals("start")) {
+//                            return;
+//                        }
+//                        changeScene("start");
+//                    }
+//                }
+//            });
+        }
         primaryStage.setScene(scene);
         primaryStage.show();
         if(sceneName.startsWith("level")) {
             musicPlayer.playMusic();
-        }
-        if(currentPane != null && currentPane instanceof World) {
-            var list = ((World) currentPane).getObjects(ScoreBoard.class);
-            if(list.size() >= 1) {
-                ScoreBoard scoreBoard = list.get(0);
-                scoreBoard.focus();
-            }
-            ((World) currentPane).start();
         }
     }
 
