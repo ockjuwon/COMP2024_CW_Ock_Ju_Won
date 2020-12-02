@@ -28,6 +28,7 @@ public class Animal extends Actor {
 	private boolean changeScore = false;
 	private int carD = 0;
 	private double w = 800;
+	private ScoreBoard scoreBoard = ScoreBoard.getInstance();
 
 	enum Key {
 		UP,
@@ -207,6 +208,7 @@ public class Animal extends Actor {
 
 	public boolean changeScore() {
 		if (changeScore) {
+			scoreBoard.update(points);
 			changeScore = false;
 			return true;
 		}

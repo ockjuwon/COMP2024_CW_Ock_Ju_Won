@@ -4,7 +4,11 @@ import frogger.model.*;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Background;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -14,6 +18,7 @@ public class Level1 extends World {
 
     private AnimationTimer timer;
     private Animal animal;
+    private ScoreBoard scoreBoard;
 
     public AnimationTimer getTimer() {
         return timer;
@@ -32,6 +37,8 @@ public class Level1 extends World {
 
         BackgroundImage froggerBack = new BackgroundImage("file:src/main/resources/iKogsKW.png");
         add(froggerBack);
+
+        scoreBoard = new ScoreBoard(getChildren());
 
         add(new Log("file:src/main/resources/log3.png", 150, 0, 166, 0.75));
         add(new Log("file:src/main/resources/log3.png", 150, 220, 166, 0.75));
