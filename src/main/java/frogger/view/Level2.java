@@ -44,7 +44,6 @@ public class Level2 extends World {
         add(new Log("file:src/main/resources/log3.png", 150, 0, 389, 0.75));
         add(new Log("file:src/main/resources/log3.png", 150, 220, 389, 0.75));
         add(new Log("file:src/main/resources/log3.png", 150, 440, 389, 0.75));
-        add(new FinishLine("file:src/main/resources/logs.png", 0, 100, 300, 30));
 
         add(new Turtle(500, 376, -1, 130, 130));
         add(new Turtle(300, 376, -1, 130, 130));

@@ -12,6 +12,9 @@ public class ScoreBoard {
     private TextField scoreText;
     private static int maxScore = 0;
     public ScoreBoard(ObservableList<Node> children) {
+        if(instance == null) {
+            instance = this;
+        }
         initializeScoreText();
         children.add(scoreText);
     }
