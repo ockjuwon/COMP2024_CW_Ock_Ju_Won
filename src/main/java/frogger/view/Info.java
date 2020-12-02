@@ -1,8 +1,13 @@
 package frogger.view;
 
+import frogger.controller.SceneController;
+import frogger.model.Animal;
 import frogger.model.World;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 
 public class Info extends Pane {
@@ -13,15 +18,10 @@ public class Info extends Pane {
 
     BackgroundImage infoImage = new BackgroundImage(new Image(IMAGE, infoWidth, infoHeight, false, true),
             BackgroundRepeat.NO_REPEAT, null, BackgroundPosition.DEFAULT, null);
-    Pane info;
 
     public Info() {
-
-        info = new Pane();
-        info.setPrefSize(infoWidth, infoHeight);
-        info.setBackground(new Background(infoImage));
-        getChildren().add(info);
-
+        setPrefSize(infoWidth, infoHeight);
+        setBackground(new Background(infoImage));
     }
 
 }
