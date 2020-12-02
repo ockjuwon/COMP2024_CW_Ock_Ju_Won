@@ -155,6 +155,9 @@ public class Animal extends Actor {
 
 			KeyCode keyCode = event.getCode();
 			Key mappedKey = keyMap.get(keyCode);
+			if(mappedKey == null) {
+				return;
+			}
 			Image selectedImage = getMoveImage(mappedKey, false);
 			mapMove(mappedKey, movementX, movementY);
 			setImage(selectedImage);
@@ -174,6 +177,9 @@ public class Animal extends Actor {
 			}
 			KeyCode keyCode = event.getCode();
 			Key mappedKey = keyMap.get(keyCode);
+			if(mappedKey == null) {
+				return;
+			}
 			Image selectedImage = getMoveImage(mappedKey, jumping);
 			mapMove(mappedKey, movementX, movementY);
 			setImage(selectedImage);
