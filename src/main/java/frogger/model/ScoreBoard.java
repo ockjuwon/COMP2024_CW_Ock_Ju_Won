@@ -34,6 +34,7 @@ public class ScoreBoard {
         if(score < maxScore) {
             return false;
         }
+        maxScore = score;
         scoreText.setText(score.toString());
         return true;
     }
