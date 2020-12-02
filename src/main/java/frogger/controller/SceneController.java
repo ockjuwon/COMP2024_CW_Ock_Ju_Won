@@ -30,7 +30,7 @@ public class SceneController extends World {
     }
 
     public void start() {
-        changeScene("level10");
+        changeScene("start");
     }
 
     private void addScreen() {
