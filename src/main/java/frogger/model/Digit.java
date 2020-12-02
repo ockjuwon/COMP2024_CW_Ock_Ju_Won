@@ -10,8 +10,10 @@ public class Digit extends Actor{
 	}
 	
 	public Digit(int n, int dim, int x, int y) {
-		Image im1 = ImageProvider.get(String.format("file:src/resources/%d.png", n), dim);
+		String format = String.format("file:src/main/resources/%d.png", n);
+		Image im1 = ImageProvider.get(format, dim);
 		setImage(im1);
+		setVisible(true);
 		setX(x);
 		setY(y);
 	}

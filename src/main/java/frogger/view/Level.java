@@ -26,7 +26,7 @@ public class Level extends World {
         BackgroundImage froggerBack = new BackgroundImage("file:src/main/resources/iKogsKW.png");
         add(froggerBack);
 
-        scoreBoard = new ScoreBoard(getChildren());
+        scoreBoard = new ScoreBoard(this);
 
 
         addObstacles();
@@ -35,9 +35,6 @@ public class Level extends World {
         addWetTurtle();
         addEnd();
         addAnimal();
-
-
-        add(new Digit(0, 30, 360, 25));
         start();
     }
 

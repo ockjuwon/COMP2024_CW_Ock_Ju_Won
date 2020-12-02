@@ -1,22 +1,24 @@
 package frogger.model;
 
 import frogger.controller.SceneController;
+import frogger.view.Level;
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.Pane;
 
 public class ScoreBoard {
     private static ScoreBoard instance;
-    private TextField scoreText;
     private static int maxScore = 0;
-    public ScoreBoard(ObservableList<Node> children) {
+    private Level level;
+    public ScoreBoard(Level level) {
+        this.level = level;
         if(instance == null) {
             instance = this;
         }
         initializeScoreText();
-        children.add(scoreText);
     }
 
     public void focus() {
@@ -25,13 +27,7 @@ public class ScoreBoard {
     }
 
     private void initializeScoreText() {
-        scoreText = new TextField();
         update(maxScore);
-        scoreText.setStyle("-fx-font: 40 arial; -fx-text-inner-color: white;");
-        scoreText.setLayoutX(500);
-        scoreText.setLayoutY(20);
-        scoreText.setBackground(Background.EMPTY);
-        scoreText.setDisable(true);
     }
 
     public boolean update(Integer score) {
@@ -39,7 +35,7 @@ public class ScoreBoard {
             return false;
         }
         maxScore = score;
-        scoreText.setText(score.toString());
+        setNumber(maxScore);
         return true;
     }
 
@@ -56,5 +52,17 @@ public class ScoreBoard {
 
     public static void getMaxScore(int maxScore) {
         ScoreBoard.maxScore = maxScore;
+    }
+
+    public void setNumber(int n) {
+        Pane pane = SceneController.getInstance().getCurrentPane();
+        int shift = 0;
+        while (n > 0) {
+            int k = n % 10;
+            Digit digit = new Digit(k, 32, 550 - shift, 20);
+            level.add(digit);
+            shift += 30;
+            n /= 10;
+        }
     }
 }

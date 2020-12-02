@@ -146,6 +146,8 @@ public class Animal extends Actor {
 			move(-1, 0);
 		} else if(getY() < 413) {
 			waterDeath = true;
+			setX(300);
+			setY(679.8 + movementY);
 		}
 	}
 
