@@ -10,9 +10,9 @@ public class Level3 extends Level {
 
     @Override
     protected void addLogsUp() {
-        add(new Log("file:src/main/resources/log3.png", 150, 0, 126, 0.1));
-        add(new Log("file:src/main/resources/log3.png", 150, 220, 126, 0.1));
-        add(new Log("file:src/main/resources/log3.png", 150, 440, 126, 0.1));
+        add(new Log("file:src/main/resources/log3.png", 150, 0, 166, 0.1));
+        add(new Log("file:src/main/resources/log3.png", 150, 220, 166, 0.1));
+        add(new Log("file:src/main/resources/log3.png", 150, 440, 166, 0.1));
     }
 
     @Override
