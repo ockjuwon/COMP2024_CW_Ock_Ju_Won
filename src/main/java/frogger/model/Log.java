@@ -21,7 +21,7 @@ public class Log extends Actor {
 		speed = s;
 		
 	}
-	public boolean getLeft() {
+	public boolean isDirectionLeft() {
 		return speed < 0;
 	}
 
