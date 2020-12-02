@@ -98,7 +98,14 @@ public class SceneController extends World {
             musicPlayer.playMusic();
         }
         if(currentPane != null && currentPane instanceof World) {
-            ((World) currentPane).getObjects(ScoreBoard.class).get(0).focus();
+            var list = ((World) currentPane).getObjects(ScoreBoard.class);
+            ScoreBoard scoreBoard = null;
+            if(list.size() >= 1) {
+                scoreBoard = list.get(0);
+            }
+            if(scoreBoard != null) {
+                scoreBoard.focus();
+            }
             ((World) currentPane).start();
         }
     }
