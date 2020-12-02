@@ -14,27 +14,30 @@ public class WetTurtle extends Actor{
 	@Override
 	public void act(long now) {
 
-				if (now/900000000  % 4 ==0) {
-					setImage(turtle2);
-					sunk = false;
-				}
-				else if (now/900000000 % 4 == 1) {
-					setImage(turtle1);
-					sunk = false;
-				}
-				else if (now/900000000 %4 == 2) {
-					setImage(turtle3);
-					sunk = false;
-				} else if (now/900000000 %4 == 3) {
-					setImage(turtle4);
-					sunk = true;
-				}
-			
+		switch (calculateType(now)) {
+			case 0:
+				setImage(turtle2);
+				break;
+			case 1:
+				setImage(turtle1);
+				break;
+			case 2:
+				setImage(turtle3);
+				break;
+			case 3:
+				setImage(turtle4);
+				break;
+		}
+		sunk = true;
 		move(speed , 0);
 		if (getX() > 600 && speed>0)
 			setX(-200);
 		if (getX() < -75 && speed<0)
 			setX(600);
+	}
+
+	private int calculateType(long now) {
+		return (int) (now/900000000 % 4);
 	}
 	public WetTurtle(int xpos, int ypos, double s, int w, int h) {
 		 turtle1 = new Image("file:src/resources/TurtleAnimation1.png", w, h, true, true);
