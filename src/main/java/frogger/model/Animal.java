@@ -122,8 +122,8 @@ public class Animal extends Actor {
 			carDeath = true;
 			return;
 		}
-		if (getIntersectingObjects(WetTurtle.class).size() >= 1 || getY() < 413) {
-			if (getY() < 413 || getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+		if (getIntersectingObjects(WetTurtle.class).size() >= 1) {
+			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
 				waterDeath = true;
 				return;
 			} else {
@@ -144,6 +144,8 @@ public class Animal extends Actor {
 			move(log.getSpeed(), 0);
 		} else if (getIntersectingObjects(Turtle.class).size() >= 1) {
 			move(-1, 0);
+		} else if(getY() < 413) {
+			waterDeath = true;
 		}
 	}
 
