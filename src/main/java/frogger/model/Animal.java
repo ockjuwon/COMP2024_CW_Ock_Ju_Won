@@ -135,7 +135,12 @@ public class Animal extends Actor {
 		goDefaultPosition();
 		String url = "file:src/main/resources/froggerUp.png";
 		setImage(ImageProvider.get(url, imgSize));
-		point = firstPoint;
+		if(point < 40) {
+			point = 0;
+		} else {
+			point -= 40;
+		}
+		firstPoint = point;
 		changeScore = true;
 		changeScore();
 		lives--;

@@ -31,9 +31,6 @@ public class ScoreBoard {
     }
 
     public boolean update(Integer score) {
-        if(score < maxScore) {
-            return false;
-        }
         maxScore = score;
         setNumber(maxScore);
         return true;
