@@ -51,6 +51,7 @@ public class Animal extends Actor {
 		setX(300);
 		setY(679.8 + movementY);
 		initializeKeyMap();
+		setLiveCounter();
 
 		setOnKeyPressed(new AnimalKeyPressedListener());
 		setOnKeyReleased(new AnimalKeyReleasedListener());
@@ -96,6 +97,11 @@ public class Animal extends Actor {
 			SceneController.getInstance().resetEndCount();
 		}
 		lives = initialLives;
+		setLiveCounter();
+	}
+
+	private void setLiveCounter() {
+		DigitPanel.setNumber(lives, 50, level);
 	}
 
 	private void respawn(long now) {
@@ -120,14 +126,14 @@ public class Animal extends Actor {
 		waterDeath = false;
 		noMove = false;
 		carD = 0;
-		setX(300);
-		setY(679.8 + movementY);
+		goDefaultPosition();
 		String url = "file:src/main/resources/froggerUp.png";
 		setImage(ImageProvider.get(url, imgSize));
 		point = firstPoint;
 		changeScore = true;
 		changeScore();
 		lives--;
+		setLiveCounter();
 		if(lives == 0) {
 			restartLevel();
 		}
@@ -148,8 +154,7 @@ public class Animal extends Actor {
 		}
 		if (getIntersectingObjects(End.class).size() >= 1) {
 			End end = getIntersectingObjects(End.class).get(0);
-			setX(300);
-			setY(679.8 + movementY);
+			goDefaultPosition();
 			if(end.isActivated()) {
 				return;
 			}
@@ -167,8 +172,7 @@ public class Animal extends Actor {
 			move(-1, 0);
 		} else if(getY() < 413) {
 			waterDeath = true;
-			setX(300);
-			setY(679.8 + movementY);
+			goDefaultPosition();
 		}
 	}
 

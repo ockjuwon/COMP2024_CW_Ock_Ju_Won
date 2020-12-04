@@ -7,7 +7,7 @@ public abstract class DigitPanel {
         int shift = 0;
         while (n > 0) {
             int k = n % 10;
-            Digit digit = new Digit(k, 32, 550 - shift, 20);
+            Digit digit = new Digit(k, 32, x - shift, 20);
             level.add(digit);
             digit.setVisible(true);
             shift += 30;
