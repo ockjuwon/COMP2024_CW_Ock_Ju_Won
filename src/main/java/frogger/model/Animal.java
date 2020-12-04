@@ -15,6 +15,8 @@ import javafx.scene.input.KeyEvent;
 
 public class Animal extends Actor {
 
+	private static Animal instance;
+
 	private int firstPoint;
 	private int point;
 	private int end = 0;
@@ -40,6 +42,10 @@ public class Animal extends Actor {
 		LEFT,
 		DOWN,
 		RIGHT,
+	}
+
+	public static Animal getInstance() {
+		return instance;
 	}
 
 	private String[] keyArray = new String[]{"Up", "Left", "Down", "Right"};
