@@ -1,9 +1,6 @@
 package frogger.controller;
 
-import frogger.model.Animal;
-import frogger.model.MusicPlayer;
-import frogger.model.ScoreBoard;
-import frogger.model.World;
+import frogger.model.*;
 import frogger.view.*;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -91,7 +88,7 @@ public class SceneController extends World {
         }
         int idx = Integer.parseInt(String.valueOf(sceneName.charAt(sceneName.length()-1)));
         if(sceneName.equals("level10")) {
-            win(animal);
+            win();
             return;
         }
         idx++;
@@ -108,13 +105,15 @@ public class SceneController extends World {
         changeScene(nextScene);
     }
 
-    public void win(Animal animal) {
+    public void win() {
+        int score = ScoreBoard.getMaxScore();
         changeScene("win");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("You Have Won The Game!");
-        alert.setHeaderText("Your High Score: "+ScoreBoard.getMaxScore()+"!");
+        alert.setHeaderText(String.format("Your High Score: %d!", score));
         alert.setContentText("Highest Possible Score: 1000");
         alert.show();
+        ScoreFileAdder.addScore(score);
     }
 
     public void changeScene(String sceneName) {
