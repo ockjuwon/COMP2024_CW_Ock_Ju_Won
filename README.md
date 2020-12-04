@@ -9,3 +9,17 @@
 * I made helper classes.
 
 * Of course, I Wrote javadoc.
+
+## Added Functions
+
+* Implemented SceneController with Singleton pattern
+
+* High Scores on File
+
+* Minus 40 point on death
+
+* Make 10 Levels
+
+* Stable score system
+
+* Back button on Info Panel
