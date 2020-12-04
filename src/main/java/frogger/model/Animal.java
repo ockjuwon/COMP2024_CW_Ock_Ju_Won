@@ -31,7 +31,7 @@ public class Animal extends Actor {
 	private int carD = 0;
 	private double w = 800;
 	private ScoreBoard scoreBoard = ScoreBoard.getInstance();
-	private final int initialLives = 5;
+	private final int initialLives = 10;
 	private int lives = initialLives;
 	private Level level;
 
