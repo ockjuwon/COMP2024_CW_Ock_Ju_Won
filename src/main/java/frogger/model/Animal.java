@@ -15,8 +15,8 @@ import javafx.scene.input.KeyEvent;
 
 public class Animal extends Actor {
 
-	private int firstPoint = ScoreBoard.getInstance().getMaxScore();
-	private int point = firstPoint;
+	private int firstPoint;
+	private int point;
 	private int end = 0;
 	private boolean jumping = false;
 	private boolean noMove = false;
@@ -55,6 +55,12 @@ public class Animal extends Actor {
 
 		setOnKeyPressed(new AnimalKeyPressedListener());
 		setOnKeyReleased(new AnimalKeyReleasedListener());
+	}
+
+	public void focus() {
+		scoreBoard = ScoreBoard.getInstance();
+		firstPoint = scoreBoard.getMaxScore();
+		point = firstPoint;
 	}
 
 	private void initializeKeyMap() {
@@ -101,7 +107,7 @@ public class Animal extends Actor {
 	}
 
 	private void setLiveCounter() {
-		DigitPanel.setNumber(lives, 50, level);
+		DigitPanel.setNumber(lives, 70, level);
 	}
 
 	private void respawn(long now) {
@@ -159,6 +165,9 @@ public class Animal extends Actor {
 				return;
 			}
 			end.activate();
+			point += 10;
+			changeScore = true;
+			changeScore();
 			SceneController.getInstance().touchEnd(this);
 			return;
 		}
@@ -211,10 +220,10 @@ public class Animal extends Actor {
 			setImage(selectedImage);
 			jumping = false;
 			if (mappedKey == Key.UP && getY() < w) {
-				changeScore = true;
-				changeScore();
 				w = getY();
 				point += 10;
+				changeScore = true;
+				changeScore();
 			}
 		}
 	}
@@ -233,6 +242,12 @@ public class Animal extends Actor {
 			mapMove(mappedKey, movementX, movementY);
 			setImage(selectedImage);
 			jumping = true;
+			if (mappedKey == Key.UP && getY() < w) {
+				w = getY();
+				point += 10;
+				changeScore = true;
+				changeScore();
+			}
 		}
 	}
 
