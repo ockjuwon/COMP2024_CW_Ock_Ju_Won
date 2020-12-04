@@ -42,7 +42,22 @@ public class Level5 extends Level {
 
     protected void addCar() {
         add(new Obstacle("file:src/main/resources/car1Left.png", 100, 597, 1, 50, 50));
-        add(new Obstacle("file:src/main/resources/car1Left.png", 400, 597, -11, 50, 50));
+        add(new Obstacle("file:src/main/resources/car1Left.png", 400, 597, -1, 50, 50));
         add(new Obstacle("file:src/main/resources/car1Left.png", 500, 490, -5, 50, 50));
+    }
+
+    @Override
+    protected void addTurtle() {
+        add(new Turtle(400, 376, 0.2, 60, 60));
+        add(new Turtle(300, 356, 0.2, 120, 60));
+
+    }
+
+    @Override
+    protected void addWetTurtle() {
+        add(new WetTurtle(700, 376, -0.2, 130, 130));
+        add(new WetTurtle(600, 597, -0.2, 130, 130));
+        add(new WetTurtle(400, 217, -0.2, 130, 130));
+        add(new WetTurtle(200, 217, -0.2, 130, 130));
     }
 }
