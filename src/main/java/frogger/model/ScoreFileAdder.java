@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public abstract class ScoreFileAdder {
-    private static final String filename = "scores.txt";
+    private static final String filename = "highscore.txt";
 
     public static void addScore(int score) {
         FileOutputStream out = null;
