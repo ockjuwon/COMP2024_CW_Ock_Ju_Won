@@ -10,13 +10,8 @@ import java.util.List;
 
 public class Start extends Pane {
 
-    private Pane mainPane;
-    private Info info;
-
     private static final int MENU_BUTTONS_START_X = 100;
     private static final int MENU_BUTTONS_START_Y = 150;
-    private static final int HEIGHT = 800;
-    private static final int WIDTH  = 600;
     private SceneController sceneController;
 
     // define list to store these buttons
@@ -26,7 +21,6 @@ public class Start extends Pane {
         sceneController = SceneController.getInstance();
 
         menuButtons = new ArrayList<>();
-        mainPane = new Pane();
 
         createStartButton();
         createInfoButton();

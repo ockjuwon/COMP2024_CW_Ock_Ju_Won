@@ -2,9 +2,7 @@ package frogger.view;
 
 import frogger.controller.SceneController;
 import frogger.model.StartButton;
-import javafx.application.Platform;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
 import java.util.ArrayList;

@@ -1,13 +1,6 @@
 package frogger.model;
 
-import frogger.controller.SceneController;
 import frogger.view.Level;
-import javafx.beans.Observable;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Pane;
 
 public class ScoreBoard {
     private static ScoreBoard instance;

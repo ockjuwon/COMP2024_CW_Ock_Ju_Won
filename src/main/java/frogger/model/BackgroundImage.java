@@ -1,7 +1,6 @@
 package frogger.model;
 
 import javafx.scene.image.Image;
-//used for loading images from a specified URL.
 
 public class BackgroundImage extends Actor{
 

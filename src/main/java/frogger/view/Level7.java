@@ -1,10 +1,6 @@
 package frogger.view;
 
 import frogger.model.*;
-import javafx.animation.AnimationTimer;
-import javafx.scene.control.Alert;
-
-import java.util.List;
 
 public class Level7 extends Level {
 

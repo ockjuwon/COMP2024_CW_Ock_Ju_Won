@@ -1,16 +1,14 @@
 import frogger.controller.SceneController;
 import frogger.view.Start;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	private Start start;
 	private SceneController sceneController;
 
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
 		sceneController = new SceneController(primaryStage);
 		sceneController.start();
 	}

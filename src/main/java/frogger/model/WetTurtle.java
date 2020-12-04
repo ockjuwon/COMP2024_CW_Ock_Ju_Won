@@ -7,7 +7,6 @@ public class WetTurtle extends Turtle{
 	Image turtle2;
 	Image turtle3;
 	Image turtle4;
-	private double speed;
 	boolean sunk = false;
 
 	@Override
