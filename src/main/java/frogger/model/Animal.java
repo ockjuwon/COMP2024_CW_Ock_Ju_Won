@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import frogger.controller.SceneController;
 import frogger.data.ImageProvider;
+import frogger.view.Level;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;
@@ -30,6 +31,9 @@ public class Animal extends Actor {
 	private int carD = 0;
 	private double w = 800;
 	private ScoreBoard scoreBoard = ScoreBoard.getInstance();
+	private final int initialLives = 5;
+	private int lives = initialLives;
+	private Level level;
 
 	enum Key {
 		UP,
@@ -41,10 +45,8 @@ public class Animal extends Actor {
 	private String[] keyArray = new String[]{"Up", "Left", "Down", "Right"};
 	private HashMap<KeyCode, Key> keyMap = new HashMap<>();
 
-	ArrayList<End> inter = new ArrayList<>();
-
-	public Animal(String imageLink) {
-
+	public Animal(String imageLink, Level level) {
+		this.level = level;
 		setImage(ImageProvider.get(imageLink, imgSize));
 		setX(300);
 		setY(679.8 + movementY);
@@ -86,6 +88,16 @@ public class Animal extends Actor {
 		move(-movementX * 2, 0);
 	}
 
+	private void restartLevel() {
+		ArrayList<End> ends = (ArrayList<End>) level.getObjects(End.class);
+
+		for(End end : ends) {
+			end.deactivate();
+			SceneController.getInstance().resetEndCount();
+		}
+		lives = initialLives;
+	}
+
 	private void respawn(long now) {
 		String deathCase = carDeath ? "cardeath" : "waterdeath";
 		noMove = true;
@@ -115,6 +127,10 @@ public class Animal extends Actor {
 		point = firstPoint;
 		changeScore = true;
 		changeScore();
+		lives--;
+		if(lives == 0) {
+			restartLevel();
+		}
 	}
 
 	private void handleInsersectObjects() {
@@ -211,7 +227,7 @@ public class Animal extends Actor {
 			Image selectedImage = getMoveImage(mappedKey, jumping);
 			mapMove(mappedKey, movementX, movementY);
 			setImage(selectedImage);
-			jumping = !jumping;
+			jumping = true;
 		}
 	}
 

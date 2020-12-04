@@ -84,7 +84,7 @@ public class Level extends World {
     }
 
     protected void addAnimal() {
-        animal = new Animal("file:src/main/resources/froggerUp.png");
+        animal = new Animal("file:src/main/resources/froggerUp.png", this);
         add(animal);
     }
 

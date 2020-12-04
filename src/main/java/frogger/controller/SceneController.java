@@ -91,6 +91,10 @@ public class SceneController extends World {
         goNextLevel(animal);
     }
 
+    public void resetEndCount() {
+        endCount = 0;
+    }
+
     public void goNextLevel(Animal animal) {
         if(!sceneName.startsWith("level")) {
             changeScene("level1");

@@ -18,10 +18,14 @@ public class End extends Actor{
 		setImage(new Image("file:src/main/resources/FrogEnd.png", 70, 70, true, true));
 		activated = true;
 	}
+
+	public void deactivate() {
+		setImage(new Image("file:src/main/resources/End.png", 60, 60, true, true));
+		activated = false;
+	}
 	
 	public boolean isActivated() {
 		return activated;
 	}
-	
 
 }
