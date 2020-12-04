@@ -2,7 +2,6 @@ package frogger.model;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import frogger.view.Level;
 import javafx.stage.Stage;
@@ -11,8 +10,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-
-import java.util.ArrayList;
 
 
 @ExtendWith(ApplicationExtension.class)

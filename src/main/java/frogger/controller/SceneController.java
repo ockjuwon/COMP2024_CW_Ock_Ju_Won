@@ -18,6 +18,7 @@ public class SceneController extends World {
     private String sceneName = null;
     private Pane currentPane = null;
     private final Stage primaryStage;
+    private String currentSceneName = "start";
     static final int WORLD_WIDTH = 600;
     static final int WORLD_HEIGHT = 800;
     private MusicPlayer musicPlayer;
@@ -40,7 +41,7 @@ public class SceneController extends World {
     }
 
     public void start() {
-        changeScene("start");
+        changeScene(currentSceneName);
     }
 
     private void addScreen() {
@@ -151,5 +152,7 @@ public class SceneController extends World {
         return instance;
     }
 
-
+    public String getCurrentSceneName() {
+        return currentSceneName;
+    }
 }

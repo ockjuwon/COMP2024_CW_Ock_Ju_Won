@@ -1,4 +1,4 @@
-package frogger.data;
+package frogger.controller;
 
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -8,19 +8,21 @@ import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(ApplicationExtension.class)
-public class TestImageProvider {
+public class TestSceneController {
+    private Stage stage;
 
     @Start
     private void start(Stage stage) {
+        this.stage = stage;
         stage.show();
     }
 
     @Test
     public void testImage(FxRobot robot) {
-        Image image = ImageProvider.get("file:src/main/resources/froggerUp.png", 200);
-        assertNotEquals(image, null);
+        SceneController sceneController = new SceneController(stage);
+        assertEquals(sceneController.getCurrentSceneName(), "start");
     }
 }
