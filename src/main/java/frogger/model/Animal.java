@@ -69,7 +69,7 @@ public class Animal extends Actor {
 	public void focus() {
 		instance = this;
 		scoreBoard = ScoreBoard.getInstance();
-		firstPoint = scoreBoard.getMaxScore();
+		firstPoint = scoreBoard.getCurrentScore();
 		point = firstPoint;
 	}
 

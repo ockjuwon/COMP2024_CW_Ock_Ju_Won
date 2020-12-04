@@ -4,7 +4,7 @@ import frogger.view.Level;
 
 public class ScoreBoard {
     private static ScoreBoard instance;
-    private static int maxScore = 0;
+    private static int currentScore = 0;
     private Level level;
     public ScoreBoard(Level level) {
         this.level = level;
@@ -16,16 +16,16 @@ public class ScoreBoard {
 
     public void focus() {
         instance = this;
-        update(maxScore);
+        update(currentScore);
     }
 
     private void initializeScoreText() {
-        update(maxScore);
+        update(currentScore);
     }
 
     public boolean update(Integer score) {
-        maxScore = score;
-        setNumber(maxScore);
+        currentScore = score;
+        setNumber(currentScore);
         return true;
     }
 
@@ -36,15 +36,15 @@ public class ScoreBoard {
         return instance;
     }
 
-    public static int getMaxScore() {
-        return maxScore;
+    public static int getCurrentScore() {
+        return currentScore;
     }
 
     public static void getMaxScore(int maxScore) {
-        ScoreBoard.maxScore = maxScore;
+        ScoreBoard.currentScore = maxScore;
     }
 
-    public void setNumber(int n) {
+    private void setNumber(int n) {
         DigitPanel.setNumber(n, 550, level);
     }
 }

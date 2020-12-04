@@ -95,7 +95,7 @@ public class SceneController extends World {
         if(sceneName.startsWith("level")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("You Have Won The Stage " + idx + "!");
-            alert.setHeaderText("Your Current Score: "+ScoreBoard.getMaxScore()+"!");
+            alert.setHeaderText("Your Current Score: "+ScoreBoard.getCurrentScore()+"!");
             alert.setContentText("Highest Possible Score: " + idx * 100);
             alert.show();
         }
@@ -103,7 +103,7 @@ public class SceneController extends World {
     }
 
     public void win() {
-        int score = ScoreBoard.getMaxScore();
+        int score = ScoreBoard.getCurrentScore();
         changeScene("win");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("You Have Won The Game!");
