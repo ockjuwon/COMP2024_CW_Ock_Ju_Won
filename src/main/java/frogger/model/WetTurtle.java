@@ -9,21 +9,15 @@ public class WetTurtle extends Turtle{
 	Image turtle4;
 	private double speed;
 	boolean sunk = false;
-	@Override
-	public void act(long now) {
 
+	@Override
+	protected void processType(long now) {
 		switch (calculateType(now)) {
 			case 0 -> setImage(turtle2);
 			case 1 -> setImage(turtle1);
 			case 2 -> setImage(turtle3);
 			case 3 -> setImage(turtle4);
 		}
-		sunk = true;
-		move(speed , 0);
-		if (getX() > 600 && speed>0)
-			setX(-200);
-		if (getX() < -75 && speed<0)
-			setX(600);
 	}
 
 	@Override

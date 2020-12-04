@@ -38,7 +38,7 @@ public class Turtle extends Actor{
 	}
 
 	protected int calculateType(long now) {
-		return (int) (now/900000000 % 4);
+		return (int) (now/900000000 % 3);
 	}
 
 	private void moveTurtle() {
