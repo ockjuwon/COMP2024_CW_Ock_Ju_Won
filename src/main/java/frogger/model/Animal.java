@@ -196,7 +196,7 @@ public class Animal extends Actor {
 
 	private class AnimalKeyReleasedListener implements EventHandler<KeyEvent> {
 		public void handle(KeyEvent event) {
-			if (noMove) {
+			if (noMove || !jumping) {
 				return;
 			}
 
