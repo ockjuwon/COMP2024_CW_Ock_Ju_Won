@@ -110,6 +110,10 @@ public class Animal extends Actor {
 		DigitPanel.setNumber(lives, 70, level);
 	}
 
+	private void resetW() {
+		w = 800;
+	}
+
 	private void respawn(long now) {
 		String deathCase = carDeath ? "cardeath" : "waterdeath";
 		noMove = true;
@@ -145,6 +149,7 @@ public class Animal extends Actor {
 		changeScore();
 		lives--;
 		setLiveCounter();
+		resetW();
 		if(lives == 0) {
 			restartLevel();
 		}
@@ -170,6 +175,7 @@ public class Animal extends Actor {
 				return;
 			}
 			end.activate();
+			resetW();
 			point += 10;
 			changeScore = true;
 			changeScore();
