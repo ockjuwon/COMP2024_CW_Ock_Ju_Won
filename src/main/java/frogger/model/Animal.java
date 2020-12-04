@@ -15,7 +15,7 @@ import javafx.scene.input.KeyEvent;
 
 public class Animal extends Actor {
 
-	private static Animal instance;
+	private static Animal instance = null;
 
 	private int firstPoint;
 	private int point;
@@ -52,6 +52,9 @@ public class Animal extends Actor {
 	private HashMap<KeyCode, Key> keyMap = new HashMap<>();
 
 	public Animal(String imageLink, Level level) {
+		if(instance == null) {
+			instance = this;
+		}
 		this.level = level;
 		setImage(ImageProvider.get(imageLink, imgSize));
 		setX(300);
@@ -64,6 +67,7 @@ public class Animal extends Actor {
 	}
 
 	public void focus() {
+		instance = this;
 		scoreBoard = ScoreBoard.getInstance();
 		firstPoint = scoreBoard.getMaxScore();
 		point = firstPoint;
