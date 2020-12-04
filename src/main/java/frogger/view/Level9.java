@@ -33,9 +33,9 @@ public class Level9 extends Level {
     }
 
     protected void addTruck() {
-        add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 0, 649, 1, 120, 120));
-        add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 300, 649, 1, 120, 120));
-        add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 600, 649, 1, 120, 120));
+        add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 0, 649, 3, 120, 120));
+        add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 300, 649, 3, 120, 120));
+        add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 600, 649, 3, 120, 120));
         add(new Obstacle("file:src/main/resources/truck2Right.png", 0, 540, 1, 200, 200));
         add(new Obstacle("file:src/main/resources/truck2Right.png", 500, 540, 1, 200, 200));
     }

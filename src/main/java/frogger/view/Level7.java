@@ -36,13 +36,13 @@ public class Level7 extends Level {
     protected void addTruck() {
         add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 0, 649, 1, 120, 120));
         add(new Obstacle("file:src/main/resources/truck1" + "Right.png", 600, 649, 1, 120, 120));
-        add(new Obstacle("file:src/main/resources/truck2Right.png", 0, 540, 1, 200, 200));
-        add(new Obstacle("file:src/main/resources/truck2Right.png", 500, 540, 1, 200, 200));
+        add(new Obstacle("file:src/main/resources/truck2Right.png", 0, 540, 0.5, 200, 200));
+        add(new Obstacle("file:src/main/resources/truck2Right.png", 500, 540, 0.5, 200, 200));
     }
 
     protected void addCar() {
-        add(new Obstacle("file:src/main/resources/car1Left.png", 100, 597, -1, 50, 50));
-        add(new Obstacle("file:src/main/resources/car1Left.png", 250, 597, -1, 50, 50));
+        add(new Obstacle("file:src/main/resources/car1Left.png", 100, 597, -0.5, 50, 50));
+        add(new Obstacle("file:src/main/resources/car1Left.png", 250, 597, -0.5, 50, 50));
         add(new Obstacle("file:src/main/resources/car1Left.png", 500, 490, -5, 50, 50));
     }
 
