@@ -96,6 +96,7 @@ public class SceneController extends World {
         }
         idx++;
         String nextScene = String.format("level%d", idx);
+        currentPane = paneHashMap.get(String.format("level%d", idx));
         musicPlayer.stopMusic();
         if(sceneName.startsWith("level")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
