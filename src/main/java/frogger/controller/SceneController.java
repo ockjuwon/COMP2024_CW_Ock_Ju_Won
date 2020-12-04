@@ -20,6 +20,7 @@ import java.util.HashMap;
 public class SceneController extends World {
     private static SceneController instance;
     private final HashMap<String, Pane> paneHashMap = new HashMap<>();
+    private final HashMap<String, Scene> sceneHashMap = new HashMap<>();
     private String sceneName = null;
     private Pane currentPane = null;
     private final Stage primaryStage;
@@ -65,20 +66,8 @@ public class SceneController extends World {
 
         for(String key : paneHashMap.keySet()) {
             Pane pane = paneHashMap.get(key);
-//            Scene scene = new Scene(pane, WORLD_WIDTH, WORLD_HEIGHT);
-//            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-//                final String storedKey = key;
-//                @Override
-//                public void handle(KeyEvent event) {
-//                    if(event.getCode() == KeyCode.ESCAPE) {
-//                        if(storedKey.equals("start")) {
-//                            return;
-//                        }
-//                        changeScene("start");
-//                    }
-//                }
-//            });
-//            sceneHashMap.put(key, scene);
+            Scene scene = new Scene(pane, WORLD_WIDTH, WORLD_HEIGHT);
+            sceneHashMap.put(key, scene);
         }
     }
 
@@ -140,21 +129,7 @@ public class SceneController extends World {
             scoreBoard.focus();
             ((World) currentPane).start();
         }
-        Scene scene = new Scene(currentPane, WORLD_WIDTH, WORLD_HEIGHT);
-        if(sceneName.startsWith("info")) {
-//            scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-//                final String storedKey = sceneName;
-//                @Override
-//                public void handle(KeyEvent event) {
-//                    if(event.getCode() == KeyCode.ESCAPE) {
-//                        if(storedKey.equals("start")) {
-//                            return;
-//                        }
-//                        changeScene("start");
-//                    }
-//                }
-//            });
-        }
+        Scene scene = sceneHashMap.get(sceneName);
         primaryStage.setScene(scene);
         primaryStage.show();
         if(sceneName.startsWith("level")) {
