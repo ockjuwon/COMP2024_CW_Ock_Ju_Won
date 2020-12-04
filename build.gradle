@@ -13,11 +13,20 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation(platform('org.junit:junit-bom:5.7.0'))
+    implementation('org.junit.jupiter:junit-jupiter')
 }
 
 javafx {
     version = '15'
     modules = ['javafx.controls','javafx.media']
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 mainClassName = 'Main'
