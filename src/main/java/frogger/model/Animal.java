@@ -219,12 +219,6 @@ public class Animal extends Actor {
 			mapMove(mappedKey, movementX, movementY);
 			setImage(selectedImage);
 			jumping = false;
-			if (mappedKey == Key.UP && getY() < w) {
-				w = getY();
-				point += 10;
-				changeScore = true;
-				changeScore();
-			}
 		}
 	}
 
