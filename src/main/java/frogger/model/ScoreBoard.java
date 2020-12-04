@@ -55,14 +55,6 @@ public class ScoreBoard {
     }
 
     public void setNumber(int n) {
-        int shift = 0;
-        while (n > 0) {
-            int k = n % 10;
-            Digit digit = new Digit(k, 32, 550 - shift, 20);
-            level.add(digit);
-            digit.setVisible(true);
-            shift += 30;
-            n /= 10;
-        }
+        DigitPanel.setNumber(n, 550, level);
     }
 }
