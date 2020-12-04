@@ -19,7 +19,7 @@ public class Level4 extends Level {
         add(new Log("file:src/main/resources/log3.png", 150, 50, 229, 2));
         add(new Log("file:src/main/resources/log3.png", 150, 270, 229, 2));
         add(new Log("file:src/main/resources/log3.png", 150, 490, 229, 2));
-        add(new Log("file:src/main/resources/logs.png", 300, 0, 276, -2));
+        add(new Log("file:src/main/resources/logs.png", 300, 0, 276, -0.75));
     }
 
     @Override

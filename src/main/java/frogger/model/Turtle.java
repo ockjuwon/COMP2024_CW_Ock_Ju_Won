@@ -48,4 +48,8 @@ public class Turtle extends Actor{
 		if (getX() < -75 && speed<0)
 			setX(600);
 	}
+
+	public double getSpeed() {
+		return speed;
+	}
 }

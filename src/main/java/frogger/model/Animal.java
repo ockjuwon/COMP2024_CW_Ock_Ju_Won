@@ -169,7 +169,8 @@ public class Animal extends Actor {
 			Log log = getIntersectingObjects(Log.class).get(0);
 			move(log.getSpeed(), 0);
 		} else if (getIntersectingObjects(Turtle.class).size() >= 1) {
-			move(-1, 0);
+			Turtle turtle = getIntersectingObjects(Turtle.class).get(0);
+			move(turtle.getSpeed(), 0);
 		} else if(getY() < 413) {
 			waterDeath = true;
 			goDefaultPosition();
