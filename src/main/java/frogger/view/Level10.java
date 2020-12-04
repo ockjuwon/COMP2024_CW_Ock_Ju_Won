@@ -16,9 +16,6 @@ public class Level10 extends Level {
 
     @Override
     protected void addLogsMiddle() {
-        add(new Log("file:src/main/resources/log3.png", 150, 50, 229, 1));
-        add(new Log("file:src/main/resources/log3.png", 150, 270, 229, 1));
-        add(new Log("file:src/main/resources/log3.png", 150, 490, 229, 1));
         add(new Log("file:src/main/resources/logs.png", 300, 0, 276, -1));
         add(new Log("file:src/main/resources/logs.png", 300, 300, 276, -1));
     }
@@ -28,9 +25,6 @@ public class Level10 extends Level {
         add(new Log("file:src/main/resources/log3.png", 150, 50, 329, 1));
         add(new Log("file:src/main/resources/log3.png", 150, 270, 329, 1));
         add(new Log("file:src/main/resources/log3.png", 150, 490, 329, 1));
-        add(new Log("file:src/main/resources/log3.png", 150, 0, 389, 1));
-        add(new Log("file:src/main/resources/log3.png", 150, 220, 389, 1));
-        add(new Log("file:src/main/resources/log3.png", 150, 440, 389, 1));
     }
 
     protected void addTruck() {

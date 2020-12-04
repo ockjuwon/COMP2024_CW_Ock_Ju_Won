@@ -37,11 +37,7 @@ public class Level3 extends Level {
     }
 
     protected void addWetTurtle() {
-        add(new WetTurtle(700, 376, 0.1, 130, 130));
-        add(new WetTurtle(600, 217, 0.1, 130, 130));
-        add(new WetTurtle(400, 217, 0.1, 130, 130));
-        add(new WetTurtle(200, 217, 0.1, 130, 130));
-        add(new WetTurtle(700, 300, 0.1, 130, 130));
-        add(new WetTurtle(500, 300, 0.1, 130, 130));
+        add(new WetTurtle(400, 326, 0.1, 130, 130));
+        add(new WetTurtle(700, 326, 0.1, 130, 130));
     }
 }
