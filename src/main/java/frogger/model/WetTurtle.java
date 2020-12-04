@@ -28,10 +28,10 @@ public class WetTurtle extends Turtle{
 
 	@Override
 	protected void initializeTurtles(int w, int h) {
-		turtle1 = new Image("file:src/resources/TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image("file:src/resources/TurtleAnimation2Wet.png", w, h, true, true);
-		turtle3 = new Image("file:src/resources/TurtleAnimation3Wet.png", w, h, true, true);
-		turtle4 = new Image("file:src/resources/TurtleAnimation4Wet.png", w, h, true, true);
+		turtle1 = new Image("file:src/main/resources/TurtleAnimation1.png", w, h, true, true);
+		turtle2 = new Image("file:src/main/resources/TurtleAnimation2Wet.png", w, h, true, true);
+		turtle3 = new Image("file:src/main/resources/TurtleAnimation3Wet.png", w, h, true, true);
+		turtle4 = new Image("file:src/main/resources/TurtleAnimation4Wet.png", w, h, true, true);
 	}
 
 	@Override
