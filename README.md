@@ -12,9 +12,13 @@
 
 ## Added Functions
 
-* Implemented SceneController with Singleton pattern
-
 * High Scores on File
+
+* Implemented lives system - Set lives 10
+
+* Fix image resources path
+
+* Popup when finished stage or game
 
 * Minus 40 point on death
 
@@ -23,3 +27,13 @@
 * Stable score system
 
 * Back button on Info Panel
+
+## Added Helper Classes
+
+* Implemented SceneController with Singleton pattern
+
+* Added Scoreboard, ScoreFileAdder class - Fixed wrong refresh
+
+* Added ImageProvider Class
+
+* Make many level classes inherits 'Level' base class using strategy pattern; achieved abstraction, comfortable code reuse
