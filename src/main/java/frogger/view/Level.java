@@ -5,6 +5,11 @@ import javafx.animation.AnimationTimer;
 
 import java.util.List;
 
+/**
+ * Level Class.
+ * it inherits World Class.
+ * uses strategy pattern. every derived class overrides it's some methods.
+ */
 public class Level extends World {
 
     public void act(long now) { }
@@ -17,6 +22,10 @@ public class Level extends World {
         return timer;
     }
 
+    /**
+     * Constructor.
+     * calls startLevel method.
+     */
     public Level() {
         startLevel();
     }
@@ -110,6 +119,9 @@ public class Level extends World {
         add(new Obstacle("file:src/main/resources/car1Left.png", 500, 490, -0.1, 50, 50));
     }
 
+    /**
+     * Make timer which handle actors.
+     */
     public void createTimer() {
         timer = new AnimationTimer() {
             @Override
@@ -121,9 +133,6 @@ public class Level extends World {
                     anActor.act(now);
                 }
 
-                if (animal.changeScore()) {
-                    setNumber(animal.getPoint());
-                }
                 if (animal.getStop()) {
                     System.out.print("STOPP:");
                     stop();
@@ -132,23 +141,19 @@ public class Level extends World {
         };
     }
 
+    /**
+     * Starts level.
+     */
     public void start() {
         createTimer();
         timer.start();
     }
 
+    /**
+     * Stop timer.
+     */
     public void stop() {
         timer.stop();
-    }
-
-    public void setNumber(int n) {
-        int shift = 0;
-        while (n > 0) {
-            int d = n / 10;
-            int k = n - d * 10;
-            n = d;
-            shift+=30;
-        }
     }
 
     public ScoreBoard getScoreBoard() {
