@@ -95,8 +95,8 @@ public class SceneController extends World {
             return;
         }
 
-        String nextScene = String.format("level%d", idx);
-        currentPane = paneHashMap.get(String.format("level%d", idx));
+        String nextScene = String.format("level%d", idx+1);
+        currentPane = paneHashMap.get(nextScene);
         musicPlayer.stopMusic();
         if(sceneName.startsWith("level")) {
             int currentMaxScore = ScoreFileAdder.getMaxScore(idx);
@@ -117,7 +117,7 @@ public class SceneController extends World {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("You Have Won The Game!");
         alert.setHeaderText(String.format("Your High Score: %d!", score));
-        alert.setContentText("Highest Possible Score: " + maxScore);
+        alert.setContentText("Highest Score: " + maxScore);
         alert.show();
     }
 
