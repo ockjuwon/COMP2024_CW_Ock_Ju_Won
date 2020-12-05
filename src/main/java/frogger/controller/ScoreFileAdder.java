@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,9 +9,18 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Scanner;
 
+
+/**
+ * A Helper class with score File IO.
+ */
 public abstract class ScoreFileAdder {
     private static final String filename = "highscore.txt";
 
+    /**
+     * Write Score on file.
+     * @param stage int represents stage.
+     * @param score int represents score.
+     */
     public static void addScore(int stage, int score) {
         String format = "%d:%d\n";
         String formatted = String.format(format, stage, score);
@@ -28,6 +37,12 @@ public abstract class ScoreFileAdder {
         }
     }
 
+
+    /**
+     * get stage's high score.
+     * @param stage int represents stage.
+     * @return max score of stage
+     */
     public static int getMaxScore(int stage) {
         int maxScore = 0;
         try {

@@ -1,5 +1,6 @@
 package frogger.data;
 
+import frogger.controller.ImageProvider;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;

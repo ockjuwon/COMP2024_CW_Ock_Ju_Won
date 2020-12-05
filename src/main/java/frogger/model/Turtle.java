@@ -2,6 +2,10 @@ package frogger.model;
 
 import javafx.scene.image.Image;
 
+/**
+ * A class inherits Actor.
+ * Animal can step on Turtle.
+ */
 public class Turtle extends Actor{
 	Image turtle1;
 	Image turtle2;
@@ -22,6 +26,12 @@ public class Turtle extends Actor{
 		turtle2 = new Image("file:src/main/resources/TurtleAnimation2.png", w, h, true, true);
 		turtle3 = new Image("file:src/main/resources/TurtleAnimation3.png", w, h, true, true);
 	}
+
+	/**
+	 * process image to time.
+	 * Move itSelf.
+	 * @param now Time.
+	 */
 	@Override
 	public void act(long now) {
 		processType(now);

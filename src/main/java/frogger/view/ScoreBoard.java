@@ -1,7 +1,10 @@
-package frogger.model;
+package frogger.view;
 
-import frogger.view.Level;
+import frogger.controller.DigitPanel;
 
+/**
+ * A view
+ */
 public class ScoreBoard {
     private static ScoreBoard instance;
     private static int currentScore = 0;

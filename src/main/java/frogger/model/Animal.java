@@ -3,9 +3,11 @@ package frogger.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import frogger.controller.DigitPanel;
+import frogger.controller.ImageProvider;
 import frogger.controller.SceneController;
-import frogger.data.ImageProvider;
 import frogger.view.Level;
+import frogger.view.ScoreBoard;
 import javafx.event.EventHandler;
 
 import javafx.scene.image.Image;

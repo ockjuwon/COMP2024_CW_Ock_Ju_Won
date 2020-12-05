@@ -1,9 +1,10 @@
-package frogger.model;
+package frogger.view;
 
-import frogger.data.ImageProvider;
+import frogger.controller.ImageProvider;
+import frogger.model.Actor;
 import javafx.scene.image.Image;
 
-public class Digit extends Actor{
+public class Digit extends Actor {
 	@Override
 	public void act(long now) {
 

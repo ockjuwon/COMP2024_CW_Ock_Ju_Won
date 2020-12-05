@@ -1,4 +1,4 @@
-package frogger.model;
+package frogger.view;
 
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -6,8 +6,19 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 
+
+/**
+ * A class extends button.
+ */
 public class StartButton extends Button{
 
+
+    /**
+     * Constructor.
+     * set text.
+     * set font, width, height, listeners.
+     * @param text Button's text.
+     */
     public StartButton(String text) {
 
         setText(text);

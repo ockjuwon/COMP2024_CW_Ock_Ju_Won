@@ -1,7 +1,6 @@
 package frogger.view;
 
 import frogger.controller.SceneController;
-import frogger.model.StartButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 

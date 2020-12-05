@@ -2,6 +2,10 @@ package frogger.model;
 
 import javafx.scene.image.Image;
 
+/**
+ * WetTurtle which extends Turtle class.
+ * if Animal touches WetTurtle class, it slips.
+ */
 public class WetTurtle extends Turtle{
 	Image turtle1;
 	Image turtle2;

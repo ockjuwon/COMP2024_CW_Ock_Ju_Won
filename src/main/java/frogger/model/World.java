@@ -13,9 +13,16 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 
 
+/**
+ * An abstract class extends pane.
+ * it's derived class is Level.
+ */
 public abstract class World extends Pane {
     private AnimationTimer timer;
-    
+
+    /**
+     * Constructor.
+     */
     public World() {
     	
     	sceneProperty().addListener(new ChangeListener<Scene>() {
@@ -29,6 +36,9 @@ public abstract class World extends Pane {
         });
     }
 
+    /**
+     * Make timer.
+     */
     public void createTimer() {
         timer = new AnimationTimer() {
             @Override
@@ -44,11 +54,17 @@ public abstract class World extends Pane {
         };
     }
 
+    /**
+     * starts timer.
+     */
     public void start() {
     	createTimer();
         timer.start();
     }
 
+    /**
+     * stops timer.
+     */
     public void stop() {
         timer.stop();
     }

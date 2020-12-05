@@ -1,5 +1,6 @@
-package frogger.model;
+package frogger.controller;
 
+import frogger.view.Digit;
 import frogger.view.Level;
 
 public abstract class DigitPanel {
