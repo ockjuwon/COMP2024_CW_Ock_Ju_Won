@@ -5,6 +5,9 @@ import frogger.model.StartButton;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
+/**
+ * A class shows info.
+ */
 public class Info extends Pane {
 
     private static final int infoWidth = 600;
@@ -15,6 +18,10 @@ public class Info extends Pane {
     BackgroundImage infoImage = new BackgroundImage(new Image(IMAGE, infoWidth, infoHeight, false, true),
             BackgroundRepeat.NO_REPEAT, null, BackgroundPosition.DEFAULT, null);
 
+    /**
+     * add Background image.
+     * make backButton.
+     */
     public Info() {
         setPrefSize(infoWidth, infoHeight);
         setBackground(new Background(infoImage));
