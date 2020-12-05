@@ -133,6 +133,7 @@ public class SceneController extends World {
             ScoreBoard scoreBoard = ((Level) currentPane).getScoreBoard();
             scoreBoard.focus();
             ((World) currentPane).getObjects(Animal.class).get(0).focus();
+            ((World) currentPane).getObjects(End.class).forEach(End::deactivate);
             ((World) currentPane).start();
         }
         Scene scene = sceneHashMap.get(sceneName);
