@@ -13,7 +13,7 @@ public abstract class ScoreFileAdder {
     private static final String filename = "highscore.txt";
 
     public static void addScore(int stage, int score) {
-        String format = "%d:%d";
+        String format = "%d:%d\n";
         String formatted = String.format(format, stage, score);
 
         try {

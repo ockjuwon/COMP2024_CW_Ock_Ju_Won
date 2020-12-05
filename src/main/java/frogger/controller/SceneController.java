@@ -104,8 +104,7 @@ public class SceneController extends World {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("You Have Won The Stage " + idx + "!");
             alert.setHeaderText("Your Current Score: " + score+ "!");
-            alert.setContentText("Current Stage Highest Score: " + currentMaxScore);
-            alert.setContentText("Next Stage Highest Score: " + nextMaxScore);
+            alert.setContentText("Current Stage Highest Score: " + currentMaxScore + "\nNext Stage Highest Score: " + nextMaxScore);
             alert.show();
         }
         changeScene(nextScene);
