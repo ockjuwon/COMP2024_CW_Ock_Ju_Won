@@ -189,7 +189,7 @@ public class Animal extends Actor {
 			point += 10;
 			changeScore = true;
 			changeScore();
-			SceneController.getInstance().touchEnd(this);
+			SceneController.getInstance().touchEnd();
 			return;
 		}
 		if(noMove) {

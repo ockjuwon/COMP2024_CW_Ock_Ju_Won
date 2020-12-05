@@ -10,7 +10,10 @@ import javafx.stage.Stage;
 import java.net.MalformedURLException;
 import java.util.HashMap;
 
-
+/**
+ * A class which controls Scene.
+ * made of singleton pattern.
+ */
 public class SceneController extends World {
     private static SceneController instance;
     private final HashMap<String, Pane> paneHashMap = new HashMap<>();
@@ -19,12 +22,17 @@ public class SceneController extends World {
     private Pane currentPane = null;
     private final Stage primaryStage;
     private String currentSceneName = "start";
-    static final int WORLD_WIDTH = 600;
-    static final int WORLD_HEIGHT = 800;
+    private static final int WORLD_WIDTH = 600;
+    private static final int WORLD_HEIGHT = 800;
     private MusicPlayer musicPlayer;
     private int endCount = 0;
 
 
+    /**
+     * Constructor of SceneController.
+     * @param primaryStage Application's primaryStage.
+     * if constructor is called multiple times, it throws ExceptionInInitializerError. it should not handled.
+     */
     public SceneController(Stage primaryStage) {
         try {
             musicPlayer = new MusicPlayer();
@@ -40,6 +48,9 @@ public class SceneController extends World {
         addScreen();
     }
 
+    /**
+     * Calls changeScene with currentSceneName argument.
+     */
     public void start() {
         changeScene(currentSceneName);
     }
@@ -66,20 +77,30 @@ public class SceneController extends World {
         }
     }
 
-    public void touchEnd(Animal animal) {
+    /**
+     * It is called when animal touched End object which is not activated.
+     */
+    public void touchEnd() {
         endCount++;
         if(endCount < 5) {
             return;
         }
         endCount = 0;
-        goNextLevel(animal);
+        goNextLevel();
     }
 
+    /**
+     * Set endCount to 0.
+     */
     public void resetEndCount() {
         endCount = 0;
     }
 
-    public void goNextLevel(Animal animal) {
+    /**
+     * go Next Level.
+     * if current level is 10, it calls win method.
+     */
+    public void goNextLevel() {
         if(!sceneName.startsWith("level")) {
             changeScene("level1");
             return;
@@ -110,17 +131,25 @@ public class SceneController extends World {
         changeScene(nextScene);
     }
 
+    /**
+     * Called when wins.
+     * show score alerts, and change scene to start when user dismissed alert.
+     */
     public void win() {
         int score = ScoreBoard.getCurrentScore();
         int maxScore = ScoreFileAdder.getMaxScore(10);
-        changeScene("win");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("You Have Won The Game!");
         alert.setHeaderText(String.format("Your High Score: %d!", score));
         alert.setContentText("Highest Score: " + maxScore);
         alert.show();
+        changeScene("start");
     }
 
+    /**
+     * Change scene to given string.
+     * @param sceneName name of next Scene.
+     */
     public void changeScene(String sceneName) {
         this.sceneName = sceneName;
         if(currentPane != null && currentPane instanceof World) {
@@ -145,15 +174,27 @@ public class SceneController extends World {
         }
     }
 
+    /**
+     * @return currentPane
+     */
     public Pane getCurrentPane() {
         return currentPane;
     }
 
+    /**
+     * dummy act method.
+     * @param now time.
+     */
     @Override
     public void act(long now) {
 
     }
 
+    /**
+     * return Singleton instance.
+     * if instance is null, throws NPE which is unhandled.
+     * @return instance
+     */
     public static SceneController getInstance() {
         if(instance == null) {
             throw new NullPointerException("Instance is not initialized");
@@ -161,6 +202,9 @@ public class SceneController extends World {
         return instance;
     }
 
+    /**
+     * @return currentSceneName String
+     */
     public String getCurrentSceneName() {
         return currentSceneName;
     }
