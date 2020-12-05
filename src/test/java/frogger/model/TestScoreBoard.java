@@ -13,14 +13,25 @@ import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
 
 
+/**
+ * Test class of ScoreBoard.
+ */
 @ExtendWith(ApplicationExtension.class)
 public class TestScoreBoard {
 
+    /**
+     * Initializes test class.
+     * @param stage stage
+     */
     @Start
     private void start(Stage stage) {
         stage.show();
     }
 
+    /**
+     * Tests maxScore works properly.
+     * @param robot robot
+     */
     @Test
     public void testMaxScore(FxRobot robot) {
         final int targetScore = 500;

@@ -14,7 +14,7 @@ import javafx.scene.layout.Pane;
 
 
 /**
- * An abstract class extends pane.
+ * An abstract class extends Pane.
  * it's derived class is Level.
  */
 public abstract class World extends Pane {

@@ -10,16 +10,27 @@ import org.testfx.framework.junit5.Start;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Test class of SceneController.
+ */
 @ExtendWith(ApplicationExtension.class)
 public class TestSceneController {
     private Stage stage;
 
+    /**
+     * Initializes test class.
+     * @param stage stage
+     */
     @Start
     private void start(Stage stage) {
         this.stage = stage;
         stage.show();
     }
 
+    /**
+     * Asserts first scene is start.
+     * @param robot robot
+     */
     @Test
     public void testImage(FxRobot robot) {
         SceneController sceneController = new SceneController(stage);

@@ -15,15 +15,25 @@ import org.testfx.framework.junit5.Start;
 
 import java.util.ArrayList;
 
-
+/**
+ * Test class of Animal.
+ */
 @ExtendWith(ApplicationExtension.class)
 public class TestAnimal {
 
+    /**
+     * Initializes test class.
+     * @param stage stage
+     */
     @Start
     private void start(Stage stage) {
         stage.show();
     }
 
+    /**
+     * Tests focus works properly.
+     * @param robot robot
+     */
     @Test
     public void testFocus(FxRobot robot) {
         Level level = new Level();

@@ -1,14 +1,18 @@
 package frogger.view;
 
-import frogger.controller.DigitPanel;
-
 /**
- * A view
+ * A view class which represents score.
  */
 public class ScoreBoard {
     private static ScoreBoard instance;
     private static int currentScore = 0;
     private Level level;
+
+
+    /**
+     * Constructs ScoreBoard.
+     * @param level Level class.
+     */
     public ScoreBoard(Level level) {
         this.level = level;
         if(instance == null) {
@@ -17,6 +21,9 @@ public class ScoreBoard {
         initializeScoreText();
     }
 
+    /**
+     * make singleton references this object.
+     */
     public void focus() {
         instance = this;
         update(currentScore);
@@ -26,12 +33,23 @@ public class ScoreBoard {
         update(currentScore);
     }
 
+
+    /**
+     * updates score.
+     * show current score.
+     * @param score score to be updated,
+     * @return true
+     */
     public boolean update(Integer score) {
         currentScore = score;
         setNumber(currentScore);
         return true;
     }
 
+    /**
+     * returns Instance which is focused.
+     * @return instance
+     */
     public static ScoreBoard getInstance() {
         if(instance == null) {
             throw new NullPointerException("Instance is not initialized");

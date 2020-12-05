@@ -3,7 +3,7 @@ package frogger.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import frogger.controller.DigitPanel;
+import frogger.view.DigitPanel;
 import frogger.controller.ImageProvider;
 import frogger.controller.SceneController;
 import frogger.view.Level;
@@ -39,13 +39,17 @@ public class Animal extends Actor {
 	private int lives = initialLives;
 	private Level level;
 
-	enum Key {
+	private enum Key {
 		UP,
 		LEFT,
 		DOWN,
 		RIGHT,
 	}
 
+	/**
+	 * returns focused instance.
+	 * @return instance
+	 */
 	public static Animal getInstance() {
 		return instance;
 	}
@@ -53,6 +57,11 @@ public class Animal extends Actor {
 	private String[] keyArray = new String[]{"Up", "Left", "Down", "Right"};
 	private HashMap<KeyCode, Key> keyMap = new HashMap<>();
 
+	/**
+	 * Constructor.
+	 * @param imageLink String represents image url
+	 * @param level Level class
+	 */
 	public Animal(String imageLink, Level level) {
 		if(instance == null) {
 			instance = this;
@@ -68,6 +77,9 @@ public class Animal extends Actor {
 		setOnKeyReleased(new AnimalKeyReleasedListener());
 	}
 
+	/**
+	 * set instance represents current object.
+	 */
 	public void focus() {
 		instance = this;
 		scoreBoard = ScoreBoard.getInstance();
@@ -209,6 +221,10 @@ public class Animal extends Actor {
 		}
 	}
 
+	/**
+	 * handles out of bound and intersecting objects.
+	 * @param now time
+	 */
 	@Override
 	public void act(long now) {
 		if (OOB()) {
