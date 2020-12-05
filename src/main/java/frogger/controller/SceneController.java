@@ -85,19 +85,27 @@ public class SceneController extends World {
             return;
         }
         int idx = Integer.parseInt(String.valueOf(sceneName.charAt(sceneName.length()-1)));
+        int score = ScoreBoard.getCurrentScore();
         if(sceneName.equals("level10")) {
+            idx = 10;
+        }
+        ScoreFileAdder.addScore(idx, score);
+        if(idx == 10) {
             win();
             return;
         }
-        idx++;
+
         String nextScene = String.format("level%d", idx);
         currentPane = paneHashMap.get(String.format("level%d", idx));
         musicPlayer.stopMusic();
         if(sceneName.startsWith("level")) {
+            int currentMaxScore = ScoreFileAdder.getMaxScore(idx);
+            int nextMaxScore = ScoreFileAdder.getMaxScore(idx+1);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("You Have Won The Stage " + idx + "!");
-            alert.setHeaderText("Your Current Score: "+ScoreBoard.getCurrentScore()+"!");
-            alert.setContentText("Highest Possible Score: " + idx * 100);
+            alert.setHeaderText("Your Current Score: " + score+ "!");
+            alert.setContentText("Current Stage Highest Score: " + currentMaxScore);
+            alert.setContentText("Next Stage Highest Score: " + nextMaxScore);
             alert.show();
         }
         changeScene(nextScene);
@@ -105,13 +113,13 @@ public class SceneController extends World {
 
     public void win() {
         int score = ScoreBoard.getCurrentScore();
+        int maxScore = ScoreFileAdder.getMaxScore(10);
         changeScene("win");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("You Have Won The Game!");
         alert.setHeaderText(String.format("Your High Score: %d!", score));
-        alert.setContentText("Highest Possible Score: 1000");
+        alert.setContentText("Highest Possible Score: " + maxScore);
         alert.show();
-        ScoreFileAdder.addScore(score);
     }
 
     public void changeScene(String sceneName) {
@@ -132,6 +140,7 @@ public class SceneController extends World {
         primaryStage.setScene(scene);
         primaryStage.show();
         if(sceneName.startsWith("level")) {
+            String intString = sceneName.replace("level", "");
             musicPlayer.playMusic();
         }
     }
