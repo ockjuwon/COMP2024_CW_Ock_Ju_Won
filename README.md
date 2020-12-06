@@ -1,6 +1,6 @@
 # COMP2042_CW_Software_Maintenance
 * Submitted in 12-19-2020
-* Conducted by Ock Ju Won, 20197749
+* Conducted by Ock Ju Won 20197749
 
 ## Environment
 The project is conducted under the conditions below:
