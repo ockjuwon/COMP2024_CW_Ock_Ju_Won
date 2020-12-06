@@ -32,7 +32,7 @@ public class TestSceneController {
      * @param robot robot
      */
     @Test
-    public void testImage(FxRobot robot) {
+    public void testScene(FxRobot robot) {
         SceneController sceneController = new SceneController(stage);
         assertEquals(sceneController.getCurrentSceneName(), "start");
     }
