@@ -40,14 +40,15 @@ To fulfil the goal of well sustainability and maintenance, mostly inheritance an
 * ScoreFileAdder saves the highest score into highscore.txt after each stage is done.
 
 3. Added ImageProvider class with Builder pattern.
+* Builder pattern is one of the patterns that is being used popular for creating objects more flexibly and easily visible. By using the builder pattern, I made the object calling functions, such as new Image(), to be replaced just by using this certain class to make the code more easily understandable.
 
-4. Make many level classes inherits 'Level' base class using Strategy pattern to achieve abstraction and comfortable code reuse.
+4. Make many level classes inherit 'Level' base class using Strategy pattern to achieve abstraction and comfortable code reuse.
 * The Level class consisted of many different methods, so the Level 1 to 10 classes are overriding certain methods by using the Strategy pattern. It led the program not to break one of the rules of SOLID, which is OCP, and solve the duplicated methods problem.
 
 5. Added DigitPanel abstract class, which is a view class for the Digit class.
 
 6. Added Focus method in ScoreBoard
-* The Focus methods changes the object, that the singleton instance variable pointing, to its own object. It makes the instance vary flexibly if the scene is changed.
+* The Focus method changes the object, that the singleton instance variable pointing, to its own object. It makes the instance vary flexibly if the scene is changed.
 
 7. WetTurtle class inherits the turtle class.
 
