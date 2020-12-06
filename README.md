@@ -40,7 +40,7 @@ To fulfil the goal of well sustainability and maintenance, mostly inheritance an
 * ScoreFileAdder saves the highest score into highscore.txt after each stage is done.
 
 3. Added ImageProvider class with Builder pattern.
-* Builder pattern is one of the patterns that is being used popular for creating objects more flexibly and easily visible. By using the builder pattern, I made the object calling functions, such as new Image(), to be replaced just by using this certain class to make the code more easily understandable.
+* Builder pattern is one of the patterns that is being used popular for creating objects more flexibly and easily visible. The new Image() is being called often, and it is replaced just by using this ImageProvider class to make the code more easily understandable.
 
 4. Make many level classes inherit 'Level' base class using Strategy pattern to achieve abstraction and comfortable code reuse.
 * The Level class consisted of many different methods, so the Level 1 to 10 classes are overriding certain methods by using the Strategy pattern. It led the program not to break one of the rules of SOLID, which is OCP, and solve the duplicated methods problem.
