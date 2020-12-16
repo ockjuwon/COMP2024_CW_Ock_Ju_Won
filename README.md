@@ -22,6 +22,7 @@ The first two stages only consisted of Logs and turtles. And the third stage is 
 3. When the frog proceeds, the user gains 10 scores
 4. When the game is over or proceeds to the next stage, pop up shows up.
 5. The pop up is showing the highest score and the status of the current stage.
+6. When the animal reaches the WetTurtle, it will slip.
 
 ## Refactoring
 
